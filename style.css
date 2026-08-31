@@ -169,7 +169,7 @@ body {
     margin: 0 auto;
 }
 
-/* --- 4. BOX SERVIZI (DESKTOP SENZA STRANI STACCHI) --- */
+/* --- 4. BOX SERVIZI --- */
 .services-section {
     padding: 40px 0 120px;
 }
@@ -196,7 +196,6 @@ body {
 .service-overlay {
     position: absolute;
     inset: 0;
-    /* Ombra omogenea e naturale che non taglia l'immagine a metà */
     background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
     display: flex;
     flex-direction: column;
@@ -238,7 +237,7 @@ body {
         transform: translateY(-8px);
     }
     .service-box:hover .service-overlay {
-        background: rgba(0, 0, 0, 0.9); /* Scurisce tutta l'immagine uniformemente */
+        background: rgba(0, 0, 0, 0.9);
     }
     .service-box:hover .service-overlay p {
         opacity: 1;
@@ -334,11 +333,38 @@ body {
     }
 }
 
-/* --- 6. FORM CONTATTO --- */
+/* --- 6. FORM CONTATTO (CON PARALLASSE) --- */
 .contact-section {
-    padding: 80px 0 120px;
+    position: relative;
+    padding: 100px 0 130px;
     background-color: var(--card-bg);
     border-top: 1px solid #222;
+    overflow: hidden;
+}
+
+.contact-bg {
+    position: absolute;
+    top: -25%;
+    left: 0;
+    width: 100%;
+    height: 150%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.12; /* Sfumato e discreto per non disturbare il testo */
+    will-change: transform;
+    pointer-events: none;
+}
+
+.contact-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(18, 18, 18, 0.6) 0%, rgba(18, 18, 18, 0.95) 100%);
+    pointer-events: none;
+}
+
+.contact-container {
+    position: relative;
+    z-index: 2;
 }
 
 .contact-title {
@@ -385,7 +411,7 @@ body {
 .form-group select,
 .form-group textarea {
     width: 100%;
-    background-color: #1a1a1a;
+    background-color: rgba(26, 26, 26, 0.85);
     border: 1px solid #333;
     border-radius: 8px;
     padding: 14px 16px;
@@ -394,6 +420,7 @@ body {
     font-size: 16px;
     transition: var(--transition);
     outline: none;
+    backdrop-filter: blur(4px);
 }
 
 .form-group input:focus,
@@ -433,7 +460,7 @@ body {
 }
 
 /* ========================================================
-   REGOLE MOBILE (TUTTO SUBITO LEGGIBILE CON SFUMATURA)
+   REGOLE MOBILE
    ======================================================== */
 @media (max-width: 768px) {
     body {
@@ -444,7 +471,6 @@ body {
         height: 65px;
     }
 
-    /* 1. Hero Mobile: Sfumatura morbida dal basso, testo sempre visibile */
     .hero-section {
         height: 75vh;
     }
@@ -468,7 +494,6 @@ body {
         font-size: 1rem;
     }
 
-    /* 2. Descrizione Studio Mobile */
     .description-section {
         padding: 70px 0;
     }
@@ -477,7 +502,6 @@ body {
         font-size: 1.4rem;
     }
 
-    /* 3. Box Servizi Verticali con sfumatura e testo sempre visibile */
     .services-grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -509,7 +533,6 @@ body {
         margin-top: 10px;
     }
 
-    /* 4. Gestori Mobile: Card scura e leggibile */
     .team-card {
         height: auto;
         min-height: 520px;
@@ -545,7 +568,10 @@ body {
         font-size: 0.85rem;
     }
 
-    /* 5. Form Mobile */
+    .contact-section {
+        padding: 70px 0 90px;
+    }
+
     .form-row {
         flex-direction: column;
         gap: 0;
