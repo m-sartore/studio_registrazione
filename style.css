@@ -1,4 +1,4 @@
-/* --- RESET & VARIABILI GLOBALI --- */
+/* --- RESET E VARIABILI --- */
 * {
     margin: 0;
     padding: 0;
@@ -6,10 +6,11 @@
 }
 
 :root {
-    --bg-black: #080808;
-    --card-bg: #121212;
+    --bg-black: #0a0a0a;
+    --card-bg: #141414;
+    --accent-gold: #c5a059;
     --text-white: #f5f5f5;
-    --text-muted: #9e9e9e;
+    --text-muted: #a0a0a0;
     --font-heading: 'Vollkorn', serif;
     --font-body: 'Inter', sans-serif;
     --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -29,32 +30,34 @@ body {
     padding: 0 20px;
 }
 
-/* --- 1. HEADER --- */
+.text-center {
+    text-align: center;
+}
+
+/* --- HEADER --- */
 .main-header {
     width: 100%;
-    padding: 30px 0;
+    padding: 35px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--bg-black);
-    position: relative;
-    z-index: 10;
 }
 
 .logo-placeholder {
     font-family: var(--font-heading);
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     letter-spacing: 4px;
     text-transform: uppercase;
     font-weight: 600;
     color: var(--text-white);
 }
 
-/* --- 2. HERO SECTION --- */
+/* --- HERO SECTION --- */
 .hero-section {
     position: relative;
     width: 100%;
-    height: 85vh; /* Copre quasi tutto lo schermo lasciando respiro */
+    height: 85vh;
     overflow: hidden;
     cursor: pointer;
 }
@@ -93,7 +96,7 @@ body {
 
 .hero-text h2 {
     font-family: var(--font-heading);
-    font-size: 3rem;
+    font-size: 3.2rem;
     letter-spacing: 2px;
     margin-bottom: 10px;
 }
@@ -103,30 +106,30 @@ body {
     color: var(--text-muted);
 }
 
-/* Effetto Hover Hero */
-.hero-section:hover .hero-bg {
-    transform: scale(1.03);
+/* Desktop Hover Hero */
+@media (hover: hover) {
+    .hero-section:hover .hero-bg {
+        transform: scale(1.03);
+    }
+    .hero-section:hover .hero-overlay {
+        background: rgba(0, 0, 0, 0.85);
+    }
+    .hero-section:hover .hero-text {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.hero-section:hover .hero-overlay {
-    background: rgba(0, 0, 0, 0.85); /* Si oscura */
-}
-
-.hero-section:hover .hero-text {
-    opacity: 1; /* Appare il testo */
-    transform: translateY(0);
-}
-
-/* --- 3. DESCRIZIONE DELLO STUDIO --- */
+/* --- DESCRIZIONE STUDIO --- */
 .description-section {
     padding: 120px 0;
     text-align: center;
 }
 
 .section-subtitle {
-    font-size: 0.9rem;
-    letter-spacing: 3px;
-    color: var(--text-muted);
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    color: var(--accent-gold);
     text-transform: uppercase;
     margin-bottom: 25px;
 }
@@ -141,7 +144,7 @@ body {
     margin: 0 auto;
 }
 
-/* --- 4. BOX SERVIZI --- */
+/* --- BOX SERVIZI (DESKTOP) --- */
 .services-section {
     padding: 40px 0 120px;
 }
@@ -150,17 +153,17 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
+    margin-top: 40px;
 }
 
 .service-box {
     position: relative;
     height: 380px;
-    border-radius: 20px; /* Bordi arrotondati */
+    border-radius: 20px;
     overflow: hidden;
     text-decoration: none;
     background-size: cover;
     background-position: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     transition: var(--transition);
 }
 
@@ -170,12 +173,12 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.95) 15%, rgba(0,0,0,0.3) 100%);
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.3) 100%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     padding: 30px 20px;
-    opacity: 0.85;
+    opacity: 0.9;
     transition: var(--transition);
 }
 
@@ -183,7 +186,7 @@ body {
     font-family: var(--font-heading);
     font-size: 1.5rem;
     color: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     transition: var(--transition);
 }
 
@@ -202,37 +205,33 @@ body {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #fff;
+    color: var(--accent-gold);
     opacity: 0;
     transition: var(--transition);
 }
 
-/* Effetto Hover Box */
-.service-box:hover {
-    transform: translateY(-8px);
+/* Desktop Hover Servizi */
+@media (hover: hover) {
+    .service-box:hover {
+        transform: translateY(-8px);
+    }
+    .service-box:hover .service-overlay {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.92);
+    }
+    .service-box:hover .service-overlay p {
+        opacity: 1;
+        max-height: 100px;
+        margin-top: 10px;
+    }
+    .service-box:hover .service-link-btn {
+        opacity: 1;
+    }
 }
 
-.service-box:hover .service-overlay {
-    opacity: 1;
-    background: rgba(0, 0, 0, 0.9);
-}
-
-.service-box:hover .service-overlay p {
-    opacity: 1;
-    max-height: 80px;
-    margin-top: 8px;
-}
-
-.service-box:hover .service-link-btn {
-    opacity: 1;
-}
-
-/* --- 5. FOTO GESTORI (TEAM) --- */
+/* --- TEAM / GESTORI (DESKTOP) --- */
 .team-section {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto 120px;
-    padding: 0 20px;
+    padding: 0 0 120px;
 }
 
 .team-card {
@@ -241,12 +240,20 @@ body {
     height: 550px;
     border-radius: 24px;
     overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
 }
 
-.team-overlay {
+.team-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center 30%;
+    transition: var(--transition);
+}
+
+.team-content-wrapper {
     position: absolute;
     top: 0;
     left: 0;
@@ -255,26 +262,18 @@ body {
     background: rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     opacity: 0;
     transition: var(--transition);
     padding: 40px;
 }
 
-.team-bio-wrapper {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    max-width: 900px;
-    transform: translateY(20px);
-    transition: var(--transition);
-}
-
 .founder-bio {
     flex: 1;
     text-align: center;
-    padding: 0 20px;
+    padding: 0 30px;
+    transform: translateY(20px);
+    transition: var(--transition);
 }
 
 .founder-bio h3 {
@@ -285,7 +284,7 @@ body {
 
 .founder-role {
     font-size: 0.85rem;
-    color: #b08d57; /* Accento dorato tenue */
+    color: var(--accent-gold);
     text-transform: uppercase;
     letter-spacing: 1px;
     display: block;
@@ -299,25 +298,26 @@ body {
 
 .divider {
     width: 1px;
-    height: 120px;
+    height: 140px;
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* Hover Team */
-.team-card:hover .team-overlay {
-    opacity: 1;
-    background: rgba(0, 0, 0, 0.88);
+/* Desktop Hover Team */
+@media (hover: hover) {
+    .team-card:hover .team-content-wrapper {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.9);
+    }
+    .team-card:hover .founder-bio {
+        transform: translateY(0);
+    }
 }
 
-.team-card:hover .team-bio-wrapper {
-    transform: translateY(0);
-}
-
-/* --- 6. FORM CONTATTO ELEGANTE --- */
+/* --- CONTACT FORM --- */
 .contact-section {
-    padding: 80px 0 120px;
+    padding: 100px 0 120px;
     background-color: var(--card-bg);
-    border-top: 1px solid #222;
+    border-top: 1px solid #1f1f1f;
 }
 
 .contact-title {
@@ -353,7 +353,7 @@ body {
 }
 
 .form-group label {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--text-muted);
@@ -364,13 +364,13 @@ body {
 .form-group select,
 .form-group textarea {
     width: 100%;
-    background-color: #1a1a1a;
+    background-color: #1f1f1f;
     border: 1px solid #333;
-    border-radius: 8px;
-    padding: 14px 16px;
+    border-radius: 10px;
+    padding: 15px 16px;
     color: #fff;
     font-family: var(--font-body);
-    font-size: 0.95rem;
+    font-size: 16px; /* Evita lo zoom automatico su iPhone */
     transition: var(--transition);
     outline: none;
 }
@@ -378,8 +378,8 @@ body {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    border-color: #fff;
-    background-color: #222;
+    border-color: var(--accent-gold);
+    background-color: #252525;
 }
 
 .submit-btn {
@@ -387,8 +387,8 @@ body {
     background-color: #fff;
     color: #000;
     border: none;
-    border-radius: 8px;
-    padding: 16px;
+    border-radius: 10px;
+    padding: 18px;
     font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 2px;
@@ -398,7 +398,8 @@ body {
 }
 
 .submit-btn:hover {
-    background-color: #ccc;
+    background-color: var(--accent-gold);
+    color: #fff;
 }
 
 /* --- FOOTER --- */
@@ -406,27 +407,135 @@ body {
     padding: 40px 0;
     text-align: center;
     font-size: 0.8rem;
-    color: #555;
+    color: #666;
     border-top: 1px solid #1a1a1a;
 }
 
-/* --- RESPONSIVITÀ PER DISPLAY PIÙ PICCOLI / TABLET --- */
-@media (max-width: 900px) {
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
+/* ========================================================
+   REGOLE MOBILE DEDICATE (Schermi inferiori a 768px)
+   ======================================================== */
+@media (max-width: 768px) {
+    
+    /* 1. Hero Mobile: Testo sempre visibile e sfumato */
+    .hero-section {
+        height: 70vh;
+    }
+    
+    .hero-overlay {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0.2) 80%);
+        align-items: flex-end;
+        padding-bottom: 40px;
+    }
+    
+    .hero-text {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .hero-text h2 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    /* 2. Descrizione Studio */
+    .description-section {
+        padding: 70px 0;
     }
 
     .description-text {
-        font-size: 1.6rem;
+        font-size: 1.35rem;
+        line-height: 1.6;
     }
 
-    .team-bio-wrapper {
+    /* 3. Box Servizi Verticali */
+    .services-section {
+        padding: 20px 0 80px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr; /* Una colonna verticale */
+        gap: 18px;
+    }
+
+    .service-box {
+        height: 230px;
+        border-radius: 16px;
+    }
+
+    .service-box:active {
+        transform: scale(0.98); /* Feedback al tocco */
+    }
+
+    .service-overlay {
+        opacity: 1;
+        background: linear-gradient(to top, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.2) 100%);
+        padding: 20px;
+    }
+
+    .service-overlay h4 {
+        font-size: 1.3rem;
+    }
+
+    .service-overlay p {
+        opacity: 1;
+        max-height: none;
+        margin-top: 4px;
+        font-size: 0.85rem;
+    }
+
+    .service-link-btn {
+        opacity: 1;
+        margin-top: 10px;
+    }
+
+    /* 4. Foto Gestori + Testo Sotto a Flusso Continuo */
+    .team-section {
+        padding-bottom: 80px;
+    }
+
+    .team-card {
+        height: auto;
+        border-radius: 20px;
+        background-color: var(--card-bg);
+    }
+
+    .team-bg {
+        position: relative;
+        height: 280px;
+        width: 100%;
+    }
+
+    .team-content-wrapper {
+        position: static;
+        opacity: 1;
+        background: transparent;
         flex-direction: column;
         gap: 30px;
+        padding: 30px 20px;
+    }
+
+    .founder-bio {
+        transform: translateY(0);
+        padding: 0;
+        text-align: left;
     }
 
     .divider {
-        display: none;
+        width: 100%;
+        height: 1px;
+        background: #252525;
+    }
+
+    /* 5. Form di Contatto */
+    .contact-section {
+        padding: 70px 0 90px;
+    }
+
+    .contact-title {
+        font-size: 1.6rem;
     }
 
     .form-row {
