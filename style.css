@@ -1,545 +1,173 @@
-/* --- RESET E VARIABILI --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --bg-black: #0a0a0a;
-    --card-bg: #141414;
-    --accent-gold: #c5a059;
-    --text-white: #f5f5f5;
-    --text-muted: #a0a0a0;
-    --font-heading: 'Vollkorn', serif;
-    --font-body: 'Inter', sans-serif;
-    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-body {
-    background-color: var(--bg-black);
-    color: var(--text-white);
-    font-family: var(--font-body);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.text-center {
-    text-align: center;
-}
-
-/* --- HEADER --- */
-.main-header {
-    width: 100%;
-    padding: 35px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--bg-black);
-}
-
-.logo-placeholder {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--text-white);
-}
-
-/* --- HERO SECTION --- */
-.hero-section {
-    position: relative;
-    width: 100%;
-    height: 85vh;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.hero-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    transition: var(--transition);
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transition: var(--transition);
-}
-
-.hero-text {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: var(--transition);
-    padding: 20px;
-}
-
-.hero-text h2 {
-    font-family: var(--font-heading);
-    font-size: 3.2rem;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-
-.hero-text p {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-}
-
-/* Desktop Hover Hero */
-@media (hover: hover) {
-    .hero-section:hover .hero-bg {
-        transform: scale(1.03);
-    }
-    .hero-section:hover .hero-overlay {
-        background: rgba(0, 0, 0, 0.85);
-    }
-    .hero-section:hover .hero-text {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* --- DESCRIZIONE STUDIO --- */
-.description-section {
-    padding: 120px 0;
-    text-align: center;
-}
-
-.section-subtitle {
-    font-size: 0.85rem;
-    letter-spacing: 4px;
-    color: var(--accent-gold);
-    text-transform: uppercase;
-    margin-bottom: 25px;
-}
-
-.description-text {
-    font-family: var(--font-heading);
-    font-size: 2.2rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #e5e5e5;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-/* --- BOX SERVIZI (DESKTOP) --- */
-.services-section {
-    padding: 40px 0 120px;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    margin-top: 40px;
-}
-
-.service-box {
-    position: relative;
-    height: 380px;
-    border-radius: 20px;
-    overflow: hidden;
-    text-decoration: none;
-    background-size: cover;
-    background-position: center;
-    transition: var(--transition);
-}
-
-.service-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.3) 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 30px 20px;
-    opacity: 0.9;
-    transition: var(--transition);
-}
-
-.service-overlay h4 {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    color: #fff;
-    margin-bottom: 6px;
-    transition: var(--transition);
-}
-
-.service-overlay p {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: var(--transition);
-}
-
-.service-link-btn {
-    display: inline-block;
-    margin-top: 15px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--accent-gold);
-    opacity: 0;
-    transition: var(--transition);
-}
-
-/* Desktop Hover Servizi */
-@media (hover: hover) {
-    .service-box:hover {
-        transform: translateY(-8px);
-    }
-    .service-box:hover .service-overlay {
-        opacity: 1;
-        background: rgba(0, 0, 0, 0.92);
-    }
-    .service-box:hover .service-overlay p {
-        opacity: 1;
-        max-height: 100px;
-        margin-top: 10px;
-    }
-    .service-box:hover .service-link-btn {
-        opacity: 1;
-    }
-}
-
-/* --- TEAM / GESTORI (DESKTOP) --- */
-.team-section {
-    padding: 0 0 120px;
-}
-
-.team-card {
-    position: relative;
-    width: 100%;
-    height: 550px;
-    border-radius: 24px;
-    overflow: hidden;
-}
-
-.team-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center 30%;
-    transition: var(--transition);
-}
-
-.team-content-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    opacity: 0;
-    transition: var(--transition);
-    padding: 40px;
-}
-
-.founder-bio {
-    flex: 1;
-    text-align: center;
-    padding: 0 30px;
-    transform: translateY(20px);
-    transition: var(--transition);
-}
-
-.founder-bio h3 {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    margin-bottom: 5px;
-}
-
-.founder-role {
-    font-size: 0.85rem;
-    color: var(--accent-gold);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    display: block;
-    margin-bottom: 15px;
-}
-
-.founder-bio p {
-    font-size: 0.95rem;
-    color: #d1d1d1;
-}
-
-.divider {
-    width: 1px;
-    height: 140px;
-    background: rgba(255, 255, 255, 0.2);
-}
-
-/* Desktop Hover Team */
-@media (hover: hover) {
-    .team-card:hover .team-content-wrapper {
-        opacity: 1;
-        background: rgba(0, 0, 0, 0.9);
-    }
-    .team-card:hover .founder-bio {
-        transform: translateY(0);
-    }
-}
-
-/* --- CONTACT FORM --- */
-.contact-section {
-    padding: 100px 0 120px;
-    background-color: var(--card-bg);
-    border-top: 1px solid #1f1f1f;
-}
-
-.contact-title {
-    font-family: var(--font-heading);
-    font-size: 2.2rem;
-    text-align: center;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-
-.contact-subtitle {
-    text-align: center;
-    color: var(--text-muted);
-    margin-bottom: 50px;
-    font-size: 0.95rem;
-}
-
-.contact-form {
-    max-width: 650px;
-    margin: 0 auto;
-}
-
-.form-row {
-    display: flex;
-    gap: 20px;
-}
-
-.form-group {
-    margin-bottom: 24px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    background-color: #1f1f1f;
-    border: 1px solid #333;
-    border-radius: 10px;
-    padding: 15px 16px;
-    color: #fff;
-    font-family: var(--font-body);
-    font-size: 16px; /* Evita lo zoom automatico su iPhone */
-    transition: var(--transition);
-    outline: none;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    border-color: var(--accent-gold);
-    background-color: #252525;
-}
-
-.submit-btn {
-    width: 100%;
-    background-color: #fff;
-    color: #000;
-    border: none;
-    border-radius: 10px;
-    padding: 18px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: var(--transition);
-    margin-top: 10px;
-}
-
-.submit-btn:hover {
-    background-color: var(--accent-gold);
-    color: #fff;
-}
-
-/* --- FOOTER --- */
-.footer {
-    padding: 40px 0;
-    text-align: center;
-    font-size: 0.8rem;
-    color: #666;
-    border-top: 1px solid #1a1a1a;
-}
-
-/* ========================================================
-   REGOLE MOBILE DEDICATE (Schermi inferiori a 768px)
-   ======================================================== */
-@media (max-width: 768px) {
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio di Registrazione</title>
     
-    /* 1. Hero Mobile: Testo sempre visibile e sfumato */
-    .hero-section {
-        height: 70vh;
-    }
+    <!-- Google Fonts: Vollkorn + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Vollkorn:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
-    .hero-overlay {
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0.2) 80%);
-        align-items: flex-end;
-        padding-bottom: 40px;
-    }
-    
-    .hero-text {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    .hero-text h2 {
-        font-size: 2rem;
-    }
+    <!-- 1. LOGO AL CENTRO -->
+    <header class="main-header">
+        <div class="logo-container">
+            <h1 class="logo-placeholder">NOME STUDIO</h1>
+        </div>
+    </header>
 
-    .hero-text p {
-        font-size: 1rem;
-    }
+    <!-- 2. HERO: FOTO A TUTTO SCHERMO (Hover desktop / Tap mobile) -->
+    <section class="hero-section touch-reveal">
+        <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1920&auto=format&fit=crop');"></div>
+        <div class="hero-overlay">
+            <div class="hero-text">
+                <h2>IL SUONO CHE CERCHI</h2>
+                <p>Spazio per la frase ad effetto che ti dirà il cliente.</p>
+            </div>
+        </div>
+    </section>
 
-    /* 2. Descrizione Studio */
-    .description-section {
-        padding: 70px 0;
-    }
+    <!-- 3. DESCRIZIONE STUDIO (FONT VOLLKORN) -->
+    <section class="description-section">
+        <div class="container">
+            <h3 class="section-subtitle">LO STUDIO</h3>
+            <p class="description-text">
+                "Questo è un testo segnaposto per la descrizione dello studio. Qui verrà spiegata l'atmosfera, 
+                la qualità dell'acustica, la cura dei dettagli e la passione che mettiamo in ogni produzione. 
+                Uno spazio pensato per artisti, produttori e musicisti che vogliono trasformare la propria visione in realtà sonora."
+            </p>
+        </div>
+    </section>
 
-    .description-text {
-        font-size: 1.35rem;
-        line-height: 1.6;
-    }
+    <!-- 4. BOX SERVIZI (4 in griglia su PC, verticali su Mobile) -->
+    <section class="services-section">
+        <div class="container">
+            <div class="services-grid">
+                
+                <!-- Servizio 1 -->
+                <div class="service-box touch-reveal" style="background-image: url('https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=600&auto=format&fit=crop');">
+                    <div class="service-overlay">
+                        <h4>Registrazione</h4>
+                        <p>Tracking vocale e strumenti in ambiente trattato</p>
+                        <a href="servizi/recording.html" class="service-link-btn">Scopri di più &rarr;</a>
+                    </div>
+                </div>
 
-    /* 3. Box Servizi Verticali */
-    .services-section {
-        padding: 20px 0 80px;
-    }
+                <!-- Servizio 2 -->
+                <div class="service-box touch-reveal" style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop');">
+                    <div class="service-overlay">
+                        <h4>Mix & Master</h4>
+                        <p>Bilanciamento analogico e digitale per standard radiofonici</p>
+                        <a href="servizi/mixing.html" class="service-link-btn">Scopri di più &rarr;</a>
+                    </div>
+                </div>
 
-    .services-grid {
-        grid-template-columns: 1fr; /* Una colonna verticale */
-        gap: 18px;
-    }
+                <!-- Servizio 3 -->
+                <div class="service-box touch-reveal" style="background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop');">
+                    <div class="service-overlay">
+                        <h4>Produzione</h4>
+                        <p>Beatmaking, arrangiamento e direzione artistica</p>
+                        <a href="servizi/produzione.html" class="service-link-btn">Scopri di più &rarr;</a>
+                    </div>
+                </div>
 
-    .service-box {
-        height: 230px;
-        border-radius: 16px;
-    }
+                <!-- Servizio 4 -->
+                <div class="service-box touch-reveal" style="background-image: url('https://images.unsplash.com/photo-1519683109079-d5f539e1542f?q=80&w=600&auto=format&fit=crop');">
+                    <div class="service-overlay">
+                        <h4>Voice Over & Audio</h4>
+                        <p>Doppiaggio, podcast e sonorizzazione video</p>
+                        <a href="servizi/post-produzione.html" class="service-link-btn">Scopri di più &rarr;</a>
+                    </div>
+                </div>
 
-    .service-box:active {
-        transform: scale(0.98); /* Feedback al tocco */
-    }
+            </div>
+        </div>
+    </section>
 
-    .service-overlay {
-        opacity: 1;
-        background: linear-gradient(to top, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.2) 100%);
-        padding: 20px;
-    }
+    <!-- 5. FOTO GESTORI CON DESCRIZIONE -->
+    <section class="team-section">
+        <div class="team-card touch-reveal" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop');">
+            <div class="team-overlay">
+                <div class="team-bio-wrapper">
+                    <div class="founder-bio">
+                        <h3>Nome Gestore 1</h3>
+                        <span class="founder-role">Sound Engineer / Producer</span>
+                        <p>Descrizione del primo ragazzo: background, specializzazioni, progetti realizzati e approccio al suono.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="founder-bio">
+                        <h3>Nome Gestore 2</h3>
+                        <span class="founder-role">Audio Engineer / Mixing Specialist</span>
+                        <p>Descrizione del secondo ragazzo: competenze tecniche, masterizzazione, hardware e visione artistica.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    .service-overlay h4 {
-        font-size: 1.3rem;
-    }
+    <!-- 6. FORM DI CONTATTO -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="contact-title">PRENOTA LA TUA SESSIONE</h2>
+            <p class="contact-subtitle">Parlaci del tuo progetto musicale o fissa una visita in studio.</p>
 
-    .service-overlay p {
-        opacity: 1;
-        max-height: none;
-        margin-top: 4px;
-        font-size: 0.85rem;
-    }
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Nome / Nome d'arte</label>
+                        <input type="text" id="name" name="name" required placeholder="Mario Rossi">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="mario@example.com">
+                    </div>
+                </div>
 
-    .service-link-btn {
-        opacity: 1;
-        margin-top: 10px;
-    }
+                <div class="form-group">
+                    <label for="service">Servizio d'interesse</label>
+                    <select id="service" name="service">
+                        <option value="recording">Registrazione</option>
+                        <option value="mixing">Mix & Master</option>
+                        <option value="produzione">Produzione Completa</option>
+                        <option value="altro">Altro / Info generiche</option>
+                    </select>
+                </div>
 
-    /* 4. Foto Gestori + Testo Sotto a Flusso Continuo */
-    .team-section {
-        padding-bottom: 80px;
-    }
+                <div class="form-group">
+                    <label for="message">Il tuo messaggio</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Descrivi brevemente il tuo brano, genere o data preferita..."></textarea>
+                </div>
 
-    .team-card {
-        height: auto;
-        border-radius: 20px;
-        background-color: var(--card-bg);
-    }
+                <button type="submit" class="submit-btn">INVIA RICHIESTA</button>
+            </form>
+        </div>
+    </section>
 
-    .team-bg {
-        position: relative;
-        height: 280px;
-        width: 100%;
-    }
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 Nome Studio di Registrazione. Tutti i diritti riservati.</p>
+    </footer>
 
-    .team-content-wrapper {
-        position: static;
-        opacity: 1;
-        background: transparent;
-        flex-direction: column;
-        gap: 30px;
-        padding: 30px 20px;
-    }
+    <!-- SCRIPT MOBILE: Gestisce il tocco/tap per mostrare le scritte -->
+    <script>
+        document.querySelectorAll('.touch-reveal').forEach(item => {
+            item.addEventListener('click', function(e) {
+                // Se l'utente clicca direttamente sul link dentro la box, lascialo navigare
+                if (e.target.tagName.toLowerCase() === 'a') return;
+                
+                // Chiude gli altri elementi aperti e attiva quello toccato
+                document.querySelectorAll('.touch-reveal').forEach(other => {
+                    if (other !== item) other.classList.remove('active');
+                });
+                item.classList.toggle('active');
+            });
+        });
+    </script>
 
-    .founder-bio {
-        transform: translateY(0);
-        padding: 0;
-        text-align: left;
-    }
-
-    .divider {
-        width: 100%;
-        height: 1px;
-        background: #252525;
-    }
-
-    /* 5. Form di Contatto */
-    .contact-section {
-        padding: 70px 0 90px;
-    }
-
-    .contact-title {
-        font-size: 1.6rem;
-    }
-
-    .form-row {
-        flex-direction: column;
-        gap: 0;
-    }
-}
+</body>
+</html>
