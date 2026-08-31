@@ -345,13 +345,13 @@ body {
     z-index: 10;
     
     /* Dice al browser di fermare lo scroll 140px prima, mostrando bene il titolo */
-    scroll-margin-top: 140px; 
+    scroll-margin-top: 170px; 
 }
 
 /* Nella sezione mobile (@media max-width: 768px) */
 @media (max-width: 768px) {
     .contact-section {
-        scroll-margin-top: 100px;
+        scroll-margin-top: 200px;
     }
 }
 
