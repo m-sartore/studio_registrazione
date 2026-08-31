@@ -14,16 +14,16 @@
 </head>
 <body>
 
-    <!-- 1. LOGO AL CENTRO -->
+    <!-- 1. HEADER FISSO IN CIMA CON LOGO CHE RIPORTA AL TOP -->
     <header class="main-header">
-        <div class="logo-container">
+        <a href="#" class="logo-link" title="Torna in cima">
             <h1 class="logo-placeholder">NOME STUDIO</h1>
-        </div>
+        </a>
     </header>
 
-    <!-- 2. HERO: FOTO A TUTTO SCHERMO (Hover desktop / Tap mobile) -->
-    <section class="hero-section touch-reveal">
-        <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1920&auto=format&fit=crop');"></div>
+    <!-- 2. HERO: FOTO A TUTTO SCHERMO CON PARALLASSE -->
+    <section class="hero-section touch-reveal" id="hero">
+        <div class="hero-bg parallax-bg" data-speed="0.2" style="background-image: url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1920&auto=format&fit=crop');"></div>
         <div class="hero-overlay">
             <div class="hero-text">
                 <h2>IL SUONO CHE CERCHI</h2>
@@ -32,8 +32,8 @@
         </div>
     </section>
 
-    <!-- 3. DESCRIZIONE STUDIO (FONT VOLLKORN) -->
-    <section class="description-section">
+    <!-- 3. DESCRIZIONE STUDIO (Animazione a discesa) -->
+    <section class="description-section reveal">
         <div class="container">
             <h3 class="section-subtitle">LO STUDIO</h3>
             <p class="description-text">
@@ -44,13 +44,13 @@
         </div>
     </section>
 
-    <!-- 4. BOX SERVIZI (4 in griglia su PC, verticali su Mobile) -->
+    <!-- 4. BOX SERVIZI (Discesa a cascata + Parallasse card) -->
     <section class="services-section">
         <div class="container">
             <div class="services-grid">
                 
                 <!-- Servizio 1 -->
-                <div class="service-box touch-reveal" style="background-image: url('https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=600&auto=format&fit=crop');">
+                <div class="service-box touch-reveal reveal" style="background-image: url('https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=600&auto=format&fit=crop');">
                     <div class="service-overlay">
                         <h4>Registrazione</h4>
                         <p>Tracking vocale e strumenti in ambiente trattato</p>
@@ -59,7 +59,7 @@
                 </div>
 
                 <!-- Servizio 2 -->
-                <div class="service-box touch-reveal" style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop');">
+                <div class="service-box touch-reveal reveal" style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop');">
                     <div class="service-overlay">
                         <h4>Mix & Master</h4>
                         <p>Bilanciamento analogico e digitale per standard radiofonici</p>
@@ -68,7 +68,7 @@
                 </div>
 
                 <!-- Servizio 3 -->
-                <div class="service-box touch-reveal" style="background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop');">
+                <div class="service-box touch-reveal reveal" style="background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop');">
                     <div class="service-overlay">
                         <h4>Produzione</h4>
                         <p>Beatmaking, arrangiamento e direzione artistica</p>
@@ -77,7 +77,7 @@
                 </div>
 
                 <!-- Servizio 4 -->
-                <div class="service-box touch-reveal" style="background-image: url('https://images.unsplash.com/photo-1519683109079-d5f539e1542f?q=80&w=600&auto=format&fit=crop');">
+                <div class="service-box touch-reveal reveal" style="background-image: url('https://images.unsplash.com/photo-1519683109079-d5f539e1542f?q=80&w=600&auto=format&fit=crop');">
                     <div class="service-overlay">
                         <h4>Voice Over & Audio</h4>
                         <p>Doppiaggio, podcast e sonorizzazione video</p>
@@ -90,7 +90,7 @@
     </section>
 
     <!-- 5. FOTO GESTORI CON DESCRIZIONE -->
-    <section class="team-section">
+    <section class="team-section reveal">
         <div class="team-card touch-reveal" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop');">
             <div class="team-overlay">
                 <div class="team-bio-wrapper">
@@ -111,7 +111,7 @@
     </section>
 
     <!-- 6. FORM DI CONTATTO -->
-    <section class="contact-section">
+    <section class="contact-section reveal">
         <div class="container">
             <h2 class="contact-title">PRENOTA LA TUA SESSIONE</h2>
             <p class="contact-subtitle">Parlaci del tuo progetto musicale o fissa una visita in studio.</p>
@@ -153,20 +153,54 @@
         <p>&copy; 2026 Nome Studio di Registrazione. Tutti i diritti riservati.</p>
     </footer>
 
-    <!-- SCRIPT MOBILE: Gestisce il tocco/tap per mostrare le scritte -->
+    <!-- SCRIPT PER ANIMAZIONI, SCROLL & PARALLASSE -->
     <script>
+        // 1. GESTIONE TOCCO SU MOBILE (Tap-to-reveal)
         document.querySelectorAll('.touch-reveal').forEach(item => {
             item.addEventListener('click', function(e) {
-                // Se l'utente clicca direttamente sul link dentro la box, lascialo navigare
                 if (e.target.tagName.toLowerCase() === 'a') return;
-                
-                // Chiude gli altri elementi aperti e attiva quello toccato
                 document.querySelectorAll('.touch-reveal').forEach(other => {
                     if (other !== item) other.classList.remove('active');
                 });
                 item.classList.toggle('active');
             });
         });
+
+        // 2. EFFETTO A DISCESA ALLO SCROLL (Intersection Observer)
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // 3. PARALLASSE FLUIDO SU SFONDI E CARD
+        window.addEventListener('scroll', () => {
+            const scrollY = window.pageYOffset;
+            
+            // Parallasse per la Hero
+            const heroBg = document.querySelector('.parallax-bg');
+            if (heroBg) {
+                heroBg.style.transform = `translate3d(0, ${scrollY * 0.25}px, 0)`;
+            }
+
+            // Piccolo effetto di galleggiamento parallasse tra le card servizi
+            const cards = document.querySelectorAll('.service-box');
+            cards.forEach((card, index) => {
+                const speed = (index % 2 === 0) ? 0.04 : -0.04;
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const offset = (window.innerHeight / 2 - rect.top) * speed;
+                    card.style.backgroundPositionY = `calc(50% + ${offset}px)`;
+                }
+            });
+        }, { passive: true });
     </script>
 
 </body>
