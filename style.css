@@ -345,7 +345,7 @@ body {
     z-index: 10;
     
     /* Dice al browser di fermare lo scroll 140px prima, mostrando bene il titolo */
-    scroll-margin-top: 170px; 
+    scroll-margin-top: 120px; 
 }
 
 /* Nella sezione mobile (@media max-width: 768px) */
