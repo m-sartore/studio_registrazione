@@ -8,21 +8,21 @@
     <!-- Google Fonts: Vollkorn + Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Vollkorn:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Vollkorn:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 1. HEADER FISSO IN CIMA (Nessun link blu, scroll to top) -->
+    <!-- 1. HEADER FISSO (LOGO CLICCABILE) -->
     <header class="main-header">
         <a href="#" class="logo-link" id="logoToTop" title="Torna in cima">
             <h1 class="logo-placeholder">NOME STUDIO</h1>
         </a>
     </header>
 
-    <!-- 2. HERO: FOTO A TUTTO SCHERMO CON PARALLASSE ESCLUSIVO -->
-    <section class="hero-section touch-reveal" id="hero">
+    <!-- 2. HERO SECTION -->
+    <section class="hero-section" id="hero">
         <div class="hero-bg parallax-hero" style="background-image: url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1920&auto=format&fit=crop');"></div>
         <div class="hero-overlay">
             <div class="hero-text">
@@ -44,54 +44,54 @@
         </div>
     </section>
 
-    <!-- 4. BOX SERVIZI (Statiche con Hover su PC / Tap su Mobile) -->
+    <!-- 4. BOX SERVIZI -->
     <section class="services-section reveal">
         <div class="container">
             <div class="services-grid">
                 
                 <!-- Servizio 1 -->
-                <div class="service-box touch-reveal" style="background-image: url('https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=600&auto=format&fit=crop');">
+                <a href="servizi/recording.html" class="service-box" style="background-image: url('https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=600&auto=format&fit=crop');">
                     <div class="service-overlay">
                         <h4>Registrazione</h4>
                         <p>Tracking vocale e strumenti in ambiente trattato</p>
-                        <a href="servizi/recording.html" class="service-link-btn">Scopri di più &rarr;</a>
+                        <span class="service-link-btn">Scopri di più &rarr;</span>
                     </div>
-                </div>
+                </a>
 
                 <!-- Servizio 2 -->
-                <div class="service-box touch-reveal" style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop');">
+                <a href="servizi/mixing.html" class="service-box" style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop');">
                     <div class="service-overlay">
                         <h4>Mix & Master</h4>
                         <p>Bilanciamento analogico e digitale per standard radiofonici</p>
-                        <a href="servizi/mixing.html" class="service-link-btn">Scopri di più &rarr;</a>
+                        <span class="service-link-btn">Scopri di più &rarr;</span>
                     </div>
-                </div>
+                </a>
 
                 <!-- Servizio 3 -->
-                <div class="service-box touch-reveal" style="background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop');">
+                <a href="servizi/produzione.html" class="service-box" style="background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop');">
                     <div class="service-overlay">
                         <h4>Produzione</h4>
                         <p>Beatmaking, arrangiamento e direzione artistica</p>
-                        <a href="servizi/produzione.html" class="service-link-btn">Scopri di più &rarr;</a>
+                        <span class="service-link-btn">Scopri di più &rarr;</span>
                     </div>
-                </div>
+                </a>
 
                 <!-- Servizio 4 -->
-                <div class="service-box touch-reveal" style="background-image: url('https://images.unsplash.com/photo-1519683109079-d5f539e1542f?q=80&w=600&auto=format&fit=crop');">
+                <a href="servizi/post-produzione.html" class="service-box" style="background-image: url('https://images.unsplash.com/photo-1519683109079-d5f539e1542f?q=80&w=600&auto=format&fit=crop');">
                     <div class="service-overlay">
                         <h4>Voice Over & Audio</h4>
                         <p>Doppiaggio, podcast e sonorizzazione video</p>
-                        <a href="servizi/post-produzione.html" class="service-link-btn">Scopri di più &rarr;</a>
+                        <span class="service-link-btn">Scopri di più &rarr;</span>
                     </div>
-                </div>
+                </a>
 
             </div>
         </div>
     </section>
 
-    <!-- 5. FOTO GESTORI CON DESCRIZIONE (Corretta e funzionante) -->
+    <!-- 5. FOTO GESTORI -->
     <section class="team-section reveal">
-        <div class="team-card touch-reveal" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop');">
+        <div class="team-card" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop');">
             <div class="team-overlay">
                 <div class="team-bio-wrapper">
                     <div class="founder-bio">
@@ -153,23 +153,12 @@
         <p>&copy; 2026 Nome Studio di Registrazione. Tutti i diritti riservati.</p>
     </footer>
 
-    <!-- JAVASCRIPT: Scroll to top, Tap Mobile, Parallasse Hero, Reveal -->
+    <!-- SCRIPT (Scroll to top + Reveal + Parallasse Hero) -->
     <script>
         // Click sul Logo per tornare in cima
         document.getElementById('logoToTop').addEventListener('click', function(e) {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Gestione tocco su Mobile (Tap to reveal per Hero, Servizi e Team)
-        document.querySelectorAll('.touch-reveal').forEach(item => {
-            item.addEventListener('click', function(e) {
-                if (e.target.tagName.toLowerCase() === 'a') return;
-                document.querySelectorAll('.touch-reveal').forEach(other => {
-                    if (other !== item) other.classList.remove('active');
-                });
-                item.classList.toggle('active');
-            });
         });
 
         // Animazione a discesa allo scroll
