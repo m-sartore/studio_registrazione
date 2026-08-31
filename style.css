@@ -11,7 +11,7 @@ html {
 
 :root {
     --bg-black: #080808;
-    --card-bg: #121212;
+    --card-bg: #141414; /* Grigio scuro a tinta unita */
     --text-white: #f5f5f5;
     --text-muted: #9e9e9e;
     --accent-gold: #b08d57;
@@ -35,7 +35,7 @@ body {
     padding: 0 20px;
 }
 
-/* --- 1. HEADER FISSO (LOGO BIANCO SENZA LINK BLU) --- */
+/* --- 1. HEADER FISSO (LOGO BIANCO) --- */
 .main-header {
     position: fixed;
     top: 0;
@@ -69,7 +69,7 @@ body {
     margin: 0;
 }
 
-/* --- 2. HERO SECTION --- */
+/* --- 2. HERO SECTION (CON PARALLASSE) --- */
 .hero-section {
     position: relative;
     width: 100%;
@@ -253,7 +253,7 @@ body {
 .team-section {
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto 120px;
+    margin: 0 auto 140px; /* Più spazio per far risaltare lo stacco con la banda grigia */
     padding: 0 20px;
 }
 
@@ -333,38 +333,16 @@ body {
     }
 }
 
-/* --- 6. FORM CONTATTO (CON PARALLASSE) --- */
+/* --- 6. BANDA GRIGIA CONTATTI (A TINTA UNITA CON PARALLASSE) --- */
 .contact-section {
     position: relative;
     padding: 100px 0 130px;
-    background-color: var(--card-bg);
-    border-top: 1px solid #222;
-    overflow: hidden;
-}
-
-.contact-bg {
-    position: absolute;
-    top: -25%;
-    left: 0;
-    width: 100%;
-    height: 150%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0.12; /* Sfumato e discreto per non disturbare il testo */
+    background-color: var(--card-bg); /* Grigio compatto a tinta unita */
+    border-top: 1px solid #242424;
+    border-radius: 40px 40px 0 0; /* Angoli curvi in alto per enfatizzare la lastra che scorre */
+    box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.8); /* Ombra verso l'alto sul nero */
     will-change: transform;
-    pointer-events: none;
-}
-
-.contact-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(18, 18, 18, 0.6) 0%, rgba(18, 18, 18, 0.95) 100%);
-    pointer-events: none;
-}
-
-.contact-container {
-    position: relative;
-    z-index: 2;
+    z-index: 10;
 }
 
 .contact-title {
@@ -411,7 +389,7 @@ body {
 .form-group select,
 .form-group textarea {
     width: 100%;
-    background-color: rgba(26, 26, 26, 0.85);
+    background-color: #1f1f1f;
     border: 1px solid #333;
     border-radius: 8px;
     padding: 14px 16px;
@@ -420,14 +398,13 @@ body {
     font-size: 16px;
     transition: var(--transition);
     outline: none;
-    backdrop-filter: blur(4px);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     border-color: var(--accent-gold);
-    background-color: #222;
+    background-color: #252525;
 }
 
 .submit-btn {
@@ -452,11 +429,14 @@ body {
 
 /* --- FOOTER --- */
 .footer {
+    position: relative;
+    z-index: 10;
+    background-color: var(--card-bg);
     padding: 40px 0;
     text-align: center;
     font-size: 0.8rem;
     color: #555;
-    border-top: 1px solid #1a1a1a;
+    border-top: 1px solid #1c1c1c;
 }
 
 /* ========================================================
@@ -533,6 +513,10 @@ body {
         margin-top: 10px;
     }
 
+    .team-section {
+        margin-bottom: 80px;
+    }
+
     .team-card {
         height: auto;
         min-height: 520px;
@@ -569,7 +553,8 @@ body {
     }
 
     .contact-section {
-        padding: 70px 0 90px;
+        padding: 60px 0 80px;
+        border-radius: 28px 28px 0 0;
     }
 
     .form-row {
