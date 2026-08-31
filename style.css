@@ -337,12 +337,22 @@ body {
 .contact-section {
     position: relative;
     padding: 100px 0 130px;
-    background-color: var(--card-bg); /* Grigio compatto a tinta unita */
+    background-color: var(--card-bg);
     border-top: 1px solid #242424;
-    border-radius: 40px 40px 0 0; /* Angoli curvi in alto per enfatizzare la lastra che scorre */
-    box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.8); /* Ombra verso l'alto sul nero */
+    border-radius: 40px 40px 0 0;
+    box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.8);
     will-change: transform;
     z-index: 10;
+    
+    /* Dice al browser di fermare lo scroll 140px prima, mostrando bene il titolo */
+    scroll-margin-top: 140px; 
+}
+
+/* Nella sezione mobile (@media max-width: 768px) */
+@media (max-width: 768px) {
+    .contact-section {
+        scroll-margin-top: 100px;
+    }
 }
 
 .contact-title {
