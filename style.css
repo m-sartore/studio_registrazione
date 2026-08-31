@@ -351,7 +351,7 @@ body {
 /* Nella sezione mobile (@media max-width: 768px) */
 @media (max-width: 768px) {
     .contact-section {
-        scroll-margin-top: 200px;
+        scroll-margin-top: 160px;
     }
 }
 
