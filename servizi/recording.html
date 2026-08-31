@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrazione - Studio di Registrazione</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Vollkorn:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Collega lo style.css principale (salendo di una cartella) -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="service-page-body">
+
+    <!-- 1. HEADER FISSO (LINK ALLA HOMEPAGE) -->
+    <header class="main-header">
+        <a href="../index.html" class="logo-link" title="Torna alla Home">
+            <h1 class="logo-placeholder">NOME STUDIO</h1>
+        </a>
+    </header>
+
+    <main class="service-detail-container">
+        
+        <!-- BREADCRUMB / PULSANTE INDIETRO -->
+        <div class="container">
+            <a href="../index.html" class="back-link">&larr; Torna a tutti i servizi</a>
+        </div>
+
+        <!-- 2. PRESENTAZIONE SERVIZIO: FOTO A SINISTRA + TESTO A DESTRA -->
+        <section class="service-hero-section">
+            <div class="container service-hero-grid">
+                
+                <!-- Immagine di copertina a sinistra -->
+                <div class="service-cover-wrap">
+                    <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1000&auto=format&fit=crop" alt="Registrazione in Studio" class="service-cover-img">
+                </div>
+
+                <!-- Dettagli e descrizione a destra -->
+                <div class="service-info-wrap">
+                    <span class="service-tag">Servizio Professionale</span>
+                    <h2 class="service-title">Registrazione</h2>
+                    
+                    <div class="service-description">
+                        <p class="lead-text">
+                            Uno spazio acusticamente calibrato per catturare l'anima della tua voce e l'energia autentica dei tuoi strumenti.
+                        </p>
+                        <p>
+                            Mettiamo a disposizione microfoni valvolari e a condensatore di fascia alta, preamplificatori analogici boutique e convertitori ad altissima fedeltà. Che si tratti di voci per brani solisti, cori, chitarre acustiche o strumenti acustici complessi, garantiamo una ripresa pulita, dinamica e pronta per il mix.
+                        </p>
+                    </div>
+
+                    <a href="../index.html#contactSection" class="service-cta-btn">Prenota una Sessione &rarr;</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. I NOSTRI LAVORI (PLAYER AUDIO CUSTOM) -->
+        <section class="portfolio-section">
+            <div class="container">
+                <div class="portfolio-header">
+                    <h3 class="section-subtitle">PORTFOLIO</h3>
+                    <h2 class="portfolio-title">I Nostri Lavori</h2>
+                    <p class="portfolio-desc">Ascolta alcuni dei brani e delle sessioni registrate nel nostro studio.</p>
+                </div>
+
+                <!-- Lista Tracce Audio -->
+                <div class="audio-tracks-list">
+                    
+                    <!-- Traccia 1 -->
+                    <div class="custom-audio-card" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+                        <div class="track-left">
+                            <button type="button" class="play-btn" aria-label="Riproduci">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                            </button>
+                            <div class="track-info">
+                                <span class="track-name">Midnight Session (Vocal & Piano)</span>
+                                <span class="track-artist">Artista Esempio • Genere R&B / Soul</span>
+                            </div>
+                        </div>
+
+                        <div class="track-timeline">
+                            <div class="progress-bar-container">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <span class="track-time">0:00</span>
+                        </div>
+                    </div>
+
+                    <!-- Traccia 2 -->
+                    <div class="custom-audio-card" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
+                        <div class="track-left">
+                            <button type="button" class="play-btn" aria-label="Riproduci">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                            </button>
+                            <div class="track-info">
+                                <span class="track-name">Urban Raw Takes</span>
+                                <span class="track-artist">Trap / Hip-Hop Vocal Session</span>
+                            </div>
+                        </div>
+
+                        <div class="track-timeline">
+                            <div class="progress-bar-container">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <span class="track-time">0:00</span>
+                        </div>
+                    </div>
+
+                    <!-- Traccia 3 -->
+                    <div class="custom-audio-card" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">
+                        <div class="track-left">
+                            <button type="button" class="play-btn" aria-label="Riproduci">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                            </button>
+                            <div class="track-info">
+                                <span class="track-name">Acoustic Sessions Vol. 1</span>
+                                <span class="track-artist">Indie Pop / Chitarre & Archi</span>
+                            </div>
+                        </div>
+
+                        <div class="track-timeline">
+                            <div class="progress-bar-container">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <span class="track-time">0:00</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 Nome Studio di Registrazione. Tutti i diritti riservati.</p>
+    </footer>
+
+    <!-- SCRIPT AUDIO PLAYER INTERATTIVO -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.custom-audio-card');
+            let currentPlayingAudio = null;
+            let currentPlayingCard = null;
+
+            cards.forEach(card => {
+                const audioSrc = card.getAttribute('data-audio');
+                const audio = new Audio(audioSrc);
+                const playBtn = card.querySelector('.play-btn');
+                const progressFill = card.querySelector('.progress-fill');
+                const progressContainer = card.querySelector('.progress-bar-container');
+                const timeText = card.querySelector('.track-time');
+
+                function formatTime(seconds) {
+                    if (isNaN(seconds)) return '0:00';
+                    const mins = Math.floor(seconds / 60);
+                    const secs = Math.floor(seconds % 60);
+                    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+                }
+
+                // Play / Pausa
+                playBtn.addEventListener('click', () => {
+                    if (audio.paused) {
+                        // Se c'è un'altra traccia in esecuzione, mettila in pausa
+                        if (currentPlayingAudio && currentPlayingAudio !== audio) {
+                            currentPlayingAudio.pause();
+                            if (currentPlayingCard) currentPlayingCard.classList.remove('is-playing');
+                        }
+                        audio.play();
+                        card.classList.add('is-playing');
+                        currentPlayingAudio = audio;
+                        currentPlayingCard = card;
+                    } else {
+                        audio.pause();
+                        card.classList.remove('is-playing');
+                    }
+                });
+
+                // Avanzamento barra
+                audio.addEventListener('timeupdate', () => {
+                    const percent = (audio.currentTime / audio.duration) * 100;
+                    progressFill.style.width = `${percent}%`;
+                    timeText.textContent = formatTime(audio.currentTime);
+                });
+
+                // Click sulla timeline per avanzare
+                progressContainer.addEventListener('click', (e) => {
+                    const width = progressContainer.clientWidth;
+                    const clickX = e.offsetX;
+                    if (audio.duration) {
+                        audio.currentTime = (clickX / width) * audio.duration;
+                    }
+                });
+
+                // Fine traccia
+                audio.addEventListener('ended', () => {
+                    card.classList.remove('is-playing');
+                    progressFill.style.width = '0%';
+                    timeText.textContent = '0:00';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
