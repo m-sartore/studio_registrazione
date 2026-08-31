@@ -21,7 +21,7 @@
         </a>
     </header>
 
-    <!-- 2. HERO SECTION CON PARALLASSE -->
+    <!-- 2. HERO SECTION CON PARALLASSE SULLA FOTO -->
     <section class="hero-section" id="hero">
         <div class="hero-bg parallax-hero" style="background-image: url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1920&auto=format&fit=crop');"></div>
         <div class="hero-overlay">
@@ -110,13 +110,9 @@
         </div>
     </section>
 
-    <!-- 6. FORM DI CONTATTO CON EFFETTO PARALLASSE -->
-    <section class="contact-section reveal">
-        <!-- Sfondo con Parallasse -->
-        <div class="contact-bg parallax-contact" style="background-image: url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1920&auto=format&fit=crop');"></div>
-        <div class="contact-overlay"></div>
-
-        <div class="container contact-container">
+    <!-- 6. BANDA GRIGIA CONTATTI (Effetto Parallasse rispetto allo sfondo nero) -->
+    <section class="contact-section" id="contactSection">
+        <div class="container">
             <h2 class="contact-title">PRENOTA LA TUA SESSIONE</h2>
             <p class="contact-subtitle">Parlaci del tuo progetto musicale o fissa una visita in studio.</p>
 
@@ -157,15 +153,15 @@
         <p>&copy; 2026 Nome Studio di Registrazione. Tutti i diritti riservati.</p>
     </footer>
 
-    <!-- SCRIPT (Scroll to top + Reveal + Parallasse Hero & Contact) -->
+    <!-- JAVASCRIPT: Scroll to top, Reveal & Parallasse (Hero + Banda Grigia) -->
     <script>
-        // Click sul Logo per tornare in cima
+        // 1. Click sul Logo per tornare in cima
         document.getElementById('logoToTop').addEventListener('click', function(e) {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Animazione a discesa allo scroll
+        // 2. Animazione a discesa allo scroll per le sezioni centrali
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -176,25 +172,25 @@
 
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        // PARALLASSE: Hero in alto e Contact Form in basso
+        // 3. PARALLASSE
         const heroBg = document.querySelector('.parallax-hero');
-        const contactBg = document.querySelector('.parallax-contact');
-        const contactSection = document.querySelector('.contact-section');
+        const contactSection = document.getElementById('contactSection');
 
         window.addEventListener('scroll', () => {
             const scrollY = window.pageYOffset;
 
-            // 1. Parallasse Hero
+            // Parallasse foto Hero
             if (scrollY < window.innerHeight && heroBg) {
                 heroBg.style.transform = `translate3d(0, ${scrollY * 0.3}px, 0)`;
             }
 
-            // 2. Parallasse Sezione Contatti
-            if (contactBg && contactSection) {
+            // Parallasse della BANDA GRIGIA CONTATTI rispetto al fondo nero
+            if (contactSection) {
                 const rect = contactSection.getBoundingClientRect();
                 if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    const offset = (window.innerHeight - rect.top) * 0.12;
-                    contactBg.style.transform = `translate3d(0, ${offset}px, 0)`;
+                    // La banda grigia sale a una velocità diversa creando lo scorrimento parallasse
+                    const offset = (window.innerHeight - rect.top) * -0.06;
+                    contactSection.style.transform = `translate3d(0, ${offset}px, 0)`;
                 }
             }
         }, { passive: true });
