@@ -10,12 +10,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Vollkorn:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Collega lo style.css principale (salendo di una cartella) -->
+    <!-- File CSS dedicato ai servizi -->
     <link rel="stylesheet" href="servizi.css">
 </head>
 <body class="service-page-body">
 
-    <!-- 1. HEADER FISSO (LINK ALLA HOMEPAGE) -->
+    <!-- 1. PULSANTE FRECCIA FISSO (SEMPRE VISIBILE ALLO SCROLL) -->
+    <a href="../index.html" class="floating-back-btn" title="Torna alla Home" aria-label="Torna indietro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+    </a>
+
+    <!-- 2. HEADER FISSO -->
     <header class="main-header">
         <a href="../index.html" class="logo-link" title="Torna alla Home">
             <h1 class="logo-placeholder">NOME STUDIO</h1>
@@ -23,13 +30,8 @@
     </header>
 
     <main class="service-detail-container">
-        
-        <!-- BREADCRUMB / PULSANTE INDIETRO -->
-        <div class="container">
-            <a href="../index.html" class="back-link">&larr; Torna a tutti i servizi</a>
-        </div>
 
-        <!-- 2. PRESENTAZIONE SERVIZIO: FOTO A SINISTRA + TESTO A DESTRA -->
+        <!-- 3. PRESENTAZIONE SERVIZIO: FOTO A SINISTRA + TESTO A DESTRA -->
         <section class="service-hero-section">
             <div class="container service-hero-grid">
                 
@@ -51,14 +53,17 @@
                             Mettiamo a disposizione microfoni valvolari e a condensatore di fascia alta, preamplificatori analogici boutique e convertitori ad altissima fedeltà. Che si tratti di voci per brani solisti, cori, chitarre acustiche o strumenti acustici complessi, garantiamo una ripresa pulita, dinamica e pronta per il mix.
                         </p>
                     </div>
-
-                    <a href="../index.html#contactSection" class="service-cta-btn">Prenota una Sessione &rarr;</a>
                 </div>
 
             </div>
+
+            <!-- PULSANTE PRENOTAZIONE CENTRATO SOTTO LA SEZIONE -->
+            <div class="service-cta-wrapper">
+                <a href="../index.html#contactSection" class="service-cta-btn">Prenota una Sessione &rarr;</a>
+            </div>
         </section>
 
-        <!-- 3. I NOSTRI LAVORI (PLAYER AUDIO CUSTOM) -->
+        <!-- 4. I NOSTRI LAVORI (PLAYER AUDIO CUSTOM) -->
         <section class="portfolio-section">
             <div class="container">
                 <div class="portfolio-header">
@@ -144,7 +149,7 @@
         <p>&copy; 2026 Nome Studio di Registrazione. Tutti i diritti riservati.</p>
     </footer>
 
-    <!-- SCRIPT AUDIO PLAYER INTERATTIVO -->
+    <!-- SCRIPT AUDIO PLAYER -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const cards = document.querySelectorAll('.custom-audio-card');
@@ -166,10 +171,8 @@
                     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
                 }
 
-                // Play / Pausa
                 playBtn.addEventListener('click', () => {
                     if (audio.paused) {
-                        // Se c'è un'altra traccia in esecuzione, mettila in pausa
                         if (currentPlayingAudio && currentPlayingAudio !== audio) {
                             currentPlayingAudio.pause();
                             if (currentPlayingCard) currentPlayingCard.classList.remove('is-playing');
@@ -184,14 +187,12 @@
                     }
                 });
 
-                // Avanzamento barra
                 audio.addEventListener('timeupdate', () => {
                     const percent = (audio.currentTime / audio.duration) * 100;
                     progressFill.style.width = `${percent}%`;
                     timeText.textContent = formatTime(audio.currentTime);
                 });
 
-                // Click sulla timeline per avanzare
                 progressContainer.addEventListener('click', (e) => {
                     const width = progressContainer.clientWidth;
                     const clickX = e.offsetX;
@@ -200,7 +201,6 @@
                     }
                 });
 
-                // Fine traccia
                 audio.addEventListener('ended', () => {
                     card.classList.remove('is-playing');
                     progressFill.style.width = '0%';
