@@ -15,12 +15,12 @@
 </head>
 <body class="service-page-body">
 
-<!-- PULSANTE FRECCIA FISSO -->
-<a href="../index.html" class="floating-back-btn" title="Torna alla Home" aria-label="Torna indietro">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M19 12H5M12 19l-7-7 7-7"/>
-    </svg>
-</a>
+    <!-- 1. PULSANTE FRECCIA FISSO -->
+    <a href="../index.html" class="floating-back-btn" title="Torna alla Home" aria-label="Torna indietro">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+    </a>
 
     <!-- 2. HEADER FISSO -->
     <header class="main-header">
@@ -31,16 +31,17 @@
 
     <main class="service-detail-container">
 
-        <!-- 3. PRESENTAZIONE SERVIZIO: FOTO A SINISTRA + TESTO A DESTRA -->
+        <!-- 3. PRESENTAZIONE SERVIZIO: FOTO + TESTO -->
         <section class="service-hero-section">
             <div class="container service-hero-grid">
                 
-                <!-- Immagine di copertina a sinistra -->
+                <!-- Immagine (con overlay sfumato e parallasse su mobile) -->
                 <div class="service-cover-wrap">
                     <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1000&auto=format&fit=crop" alt="Registrazione in Studio" class="service-cover-img">
+                    <div class="service-cover-overlay"></div>
                 </div>
 
-                <!-- Dettagli e descrizione a destra -->
+                <!-- Testi + Bottone allineato a destra su PC -->
                 <div class="service-info-wrap">
                     <span class="service-tag">Servizio Professionale</span>
                     <h2 class="service-title">Registrazione</h2>
@@ -53,13 +54,13 @@
                             Mettiamo a disposizione microfoni valvolari e a condensatore di fascia alta, preamplificatori analogici boutique e convertitori ad altissima fedeltà. Che si tratti di voci per brani solisti, cori, chitarre acustiche o strumenti acustici complessi, garantiamo una ripresa pulita, dinamica e pronta per il mix.
                         </p>
                     </div>
+
+                    <!-- PULSANTE PRENOTAZIONE ALLINEATO AL TESTO -->
+                    <div class="service-cta-wrapper">
+                        <a href="../index.html#contactSection" class="service-cta-btn">Prenota una Sessione &rarr;</a>
+                    </div>
                 </div>
 
-            </div>
-
-            <!-- PULSANTE PRENOTAZIONE CENTRATO SOTTO LA SEZIONE -->
-            <div class="service-cta-wrapper">
-                <a href="../index.html#contactSection" class="service-cta-btn">Prenota una Sessione &rarr;</a>
             </div>
         </section>
 
@@ -149,9 +150,10 @@
         <p>&copy; 2026 Nome Studio di Registrazione. Tutti i diritti riservati.</p>
     </footer>
 
-    <!-- SCRIPT AUDIO PLAYER -->
+    <!-- SCRIPT AUDIO PLAYER + PARALLASSE MOBILE -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // 1. GESTIONE AUDIO PLAYER
             const cards = document.querySelectorAll('.custom-audio-card');
             let currentPlayingAudio = null;
             let currentPlayingCard = null;
@@ -207,6 +209,17 @@
                     timeText.textContent = '0:00';
                 });
             });
+
+            // 2. PARALLASSE SU MOBILE PER LA COPERTINA
+            const coverImg = document.querySelector('.service-cover-img');
+            window.addEventListener('scroll', () => {
+                if (window.innerWidth <= 900 && coverImg) {
+                    const scrollY = window.pageYOffset;
+                    if (scrollY < window.innerHeight) {
+                        coverImg.style.transform = `translate3d(0, ${scrollY * 0.35}px, 0)`;
+                    }
+                }
+            }, { passive: true });
         });
     </script>
 </body>
