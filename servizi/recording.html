@@ -13,7 +13,10 @@
     <!-- File CSS dedicato ai servizi -->
     <link rel="stylesheet" href="servizi.css">
 
-    <!-- STILI DEDICATI ALLA SEZIONE PORTFOLIO PROGETTI -->
+    <!-- COLLEGAMENTO ESCLUSIVO AI DATI DI QUESTA PAGINA -->
+    <script src="recording.js"></script>
+
+    <!-- STILI DEDICATI AL PORTFOLIO DINAMICO E RESPONSIVE -->
     <style>
         /* Portfolio Wrapper & Header */
         .portfolio-section {
@@ -33,7 +36,7 @@
             font-size: 0.85rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #d4af37; /* Accento dorato / caldo studio */
+            color: #d4af37; /* Tonalità oro studio */
             margin-bottom: 8px;
         }
 
@@ -66,7 +69,7 @@
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.015) 100%);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 18px;
-            padding: 32px;
+            padding: 34px;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
         }
@@ -76,7 +79,6 @@
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
         }
 
-        /* Testata Progetto (Titolo & Descrizione) */
         .project-meta-tag {
             display: inline-block;
             font-family: 'Inter', sans-serif;
@@ -91,43 +93,50 @@
         .project-heading {
             font-family: 'Vollkorn', serif;
             font-size: 1.85rem;
-            margin: 0 0 10px 0;
+            margin: 0 0 18px 0;
             color: #fff;
             letter-spacing: -0.5px;
         }
 
-        .project-summary {
+        /* Testo / Paragrafo Libero */
+        .block-text {
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.65;
             color: #a2a2aa;
-            margin: 0 0 24px 0;
-            max-width: 850px;
+            margin: 0 0 22px 0;
         }
 
-        /* Audio Player Integration */
-        .project-audio-container {
-            margin-bottom: 24px;
+        /* Didascalie sotto ad audio, foto o video */
+        .block-caption {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: #8e8e96;
+            line-height: 1.45;
+            margin: 8px 0 24px 0;
+            padding-left: 12px;
+            border-left: 2px solid rgba(212, 175, 55, 0.45);
+            font-style: italic;
         }
 
-        /* Media Grid (Immagine + Video affiancati) */
-        .project-media-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+        /* Contenitore Audio */
+        .block-audio-wrap {
+            margin-bottom: 6px;
         }
 
-        .media-box {
-            position: relative;
+        /* 1 SOLO VIDEO / 1 SOLA FOTO: 100% di larghezza su Desktop */
+        .media-single {
+            width: 100%;
             border-radius: 12px;
             overflow: hidden;
             aspect-ratio: 16 / 9;
             background: #000;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            margin-bottom: 4px;
         }
 
-        /* Immagine */
-        .project-photo {
+        .media-single img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -135,12 +144,11 @@
             transition: transform 0.5s ease;
         }
 
-        .project-showcase-card:hover .project-photo {
-            transform: scale(1.03);
+        .project-showcase-card:hover .media-single img {
+            transform: scale(1.02);
         }
 
-        /* Video YouTube */
-        .project-video iframe {
+        .media-single iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -150,13 +158,50 @@
             display: block;
         }
 
-        /* Responsive Mobile & Tablet */
+        /* 2 O PIÙ VIDEO / FOTO: Griglia a Colonne su Desktop */
+        .media-grid-multiple {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            width: 100%;
+            margin-bottom: 4px;
+        }
+
+        .media-grid-item {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .media-grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .project-showcase-card:hover .media-grid-item img {
+            transform: scale(1.03);
+        }
+
+        .media-grid-item iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
         /* =======================================================
            RESPONSIVE MOBILE: CARD A FILO SCHERMO (FULL-WIDTH)
         ======================================================= */
         @media (max-width: 850px) {
-            
-            /* 1. Azzeriamo i margini dei contenitori esterni */
             .portfolio-section {
                 padding: 60px 0;
             }
@@ -167,7 +212,6 @@
                 max-width: 100% !important;
             }
 
-            /* L'intestazione del portfolio mantiene un po' di spazio ai lati per il testo */
             .portfolio-header {
                 padding: 0 18px;
                 margin-bottom: 35px;
@@ -177,20 +221,18 @@
                 font-size: 2rem;
             }
 
-            /* 2. Il wrapper occupa tutto lo schermo da bordo a bordo */
             .projects-wrapper {
                 padding: 0 !important;
-                gap: 25px; /* Spazio verticale tra una card e l'altra */
+                gap: 25px;
             }
 
-            /* 3. La Card arriva ai limiti del display */
             .project-showcase-card {
-                border-radius: 0;              /* Angoli dritti a filo display */
-                border-left: none;             /* Elimina il bordo sinistro */
-                border-right: none;            /* Elimina il bordo destro */
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
                 border-top: 1px solid rgba(255, 255, 255, 0.1);
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                padding: 24px 16px;            /* Solo 16px di respiro interno */
+                padding: 24px 16px;
                 box-shadow: none;
             }
 
@@ -198,19 +240,14 @@
                 font-size: 1.5rem;
             }
 
-            .project-summary {
-                font-size: 0.9rem;
-                margin-bottom: 18px;
+            /* Su mobile le griglie si incolonnano al 100% */
+            .media-grid-multiple {
+                grid-template-columns: 1fr;
+                gap: 14px;
             }
 
-            /* 4. Immagine e Video a tutta larghezza */
-            .project-media-row {
-                grid-template-columns: 1fr;    /* Si incolonnano */
-                gap: 16px;
-            }
-
-            .media-box {
-                border-radius: 10px;          /* Mantengono gli angoli arrotondati all'interno */
+            .media-single, .media-grid-item {
+                border-radius: 10px;
             }
         }
     </style>
@@ -266,7 +303,7 @@
             </div>
         </section>
 
-        <!-- 4. I NOSTRI LAVORI (PORTFOLIO PROGETTI) -->
+        <!-- 4. I NOSTRI LAVORI (PORTFOLIO GENERATO DINAMICAMENTE DA recording.js) -->
         <section class="portfolio-section">
             <div class="container">
                 <div class="portfolio-header">
@@ -275,201 +312,8 @@
                     <p class="portfolio-desc">Esplora le sessioni, ascolta le registrazioni in alta fedeltà e guarda i video realizzati nel nostro studio.</p>
                 </div>
 
-                <!-- LISTA PROGETTI -->
-                <div class="projects-wrapper">
-
-                    <!-- ==============================================
-                         PROGETTO 1
-                    ============================================== -->
-                    <article class="project-showcase-card">
-                        <!-- 1. Titolo e Tag -->
-                        <span class="project-meta-tag">Sessione Acustica • R&B / Soul</span>
-                        <h3 class="project-heading">Midnight Session (Vocal & Piano)</h3>
-
-                        <!-- 2. Breve Descrizione -->
-                        <p class="project-summary">
-                            Registrazione in presa diretta con pianoforte a coda Steinway ripreso in configurazione stereo Blumlein e voce solista catturata tramite microfono valvolare Neumann U67 e preamp analogico Neve 1073.
-                        </p>
-
-                        <!-- 3. Audio Player Custom -->
-                        <div class="project-audio-container">
-                            <div class="custom-audio-card" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
-                                <div class="track-left">
-                                    <button type="button" class="play-btn" aria-label="Riproduci">
-                                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                                        <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                                    </button>
-                                    <div class="track-info">
-                                        <span class="track-name">Midnight Session (Vocal & Piano)</span>
-                                        <span class="track-artist">Take #03 • Master Raw</span>
-                                    </div>
-                                </div>
-                                <div class="track-timeline">
-                                    <div class="progress-bar-container">
-                                        <div class="progress-fill"></div>
-                                    </div>
-                                    <span class="track-time">0:00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 4. Immagine & 5. Video (Affiancati su Desktop, Incolonnati su Mobile) -->
-                        <div class="project-media-row">
-                            <!-- Immagine di Default -->
-                            <div class="media-box">
-                                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=900&auto=format&fit=crop" alt="Sessione di registrazione pianoforte" class="project-photo">
-                            </div>
-
-                            <!-- Video YouTube Embed -->
-                            <div class="media-box project-video">
-                                <!-- Sostituisci "4Tr0otuiQuU" con l'ID effettivo del tuo video YouTube -->
-                                <iframe src="https://www.youtube-nocookie.com/embed/4Tr0otuiQuU?rel=0&modestbranding=1" title="Video Sessione 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </article>
-
-
-                    <!-- ==============================================
-                         PROGETTO 2
-                    ============================================== -->
-                    <article class="project-showcase-card">
-                        <!-- 1. Titolo e Tag -->
-                        <span class="project-meta-tag">Vocal Booth • Urban / Hip-Hop</span>
-                        <h3 class="project-heading">Urban Raw Takes</h3>
-
-                        <!-- 2. Breve Descrizione -->
-                        <p class="project-summary">
-                            Tracciamento vocale ad alta definizione per strofe e raddoppi. Catena di registrazione con compressore valvolare Tube-Tech CL1B per un suono compatto, cristallino e perfettamente controllato sulle basse.
-                        </p>
-
-                        <!-- 3. Audio Player Custom -->
-                        <div class="project-audio-container">
-                            <div class="custom-audio-card" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
-                                <div class="track-left">
-                                    <button type="button" class="play-btn" aria-label="Riproduci">
-                                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                                        <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                                    </button>
-                                    <div class="track-info">
-                                        <span class="track-name">Urban Raw Takes (Main & Adlibs)</span>
-                                        <span class="track-artist">Studio Recording Session</span>
-                                    </div>
-                                </div>
-                                <div class="track-timeline">
-                                    <div class="progress-bar-container">
-                                        <div class="progress-fill"></div>
-                                    </div>
-                                    <span class="track-time">0:00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 4. Immagine & 5. Video -->
-                        <div class="project-media-row">
-                            <div class="media-box">
-                                <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=900&auto=format&fit=crop" alt="Consolle e mixing desk" class="project-photo">
-                            </div>
-                            <div class="media-box project-video">
-                                <iframe src="https://www.youtube-nocookie.com/embed/SlUfsrgaetI?rel=0&modestbranding=1" title="Video Sessione 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </article>
-
-
-                    <!-- ==============================================
-                         PROGETTO 3
-                    ============================================== -->
-                    <article class="project-showcase-card">
-                        <!-- 1. Titolo e Tag -->
-                        <span class="project-meta-tag">Acustico & Ensemble • Indie Folk</span>
-                        <h3 class="project-heading">Acoustic Sessions Vol. 1</h3>
-
-                        <!-- 2. Breve Descrizione -->
-                        <p class="project-summary">
-                            Microfonazione stereo XY per due chitarre acustiche Martin D-28, contrabbasso in presa combinata D.I. + microfono a nastro Coles 4038 per preservare il legno e il calore della stanza.
-                        </p>
-
-                        <!-- 3. Audio Player Custom -->
-                        <div class="project-audio-container">
-                            <div class="custom-audio-card" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">
-                                <div class="track-left">
-                                    <button type="button" class="play-btn" aria-label="Riproduci">
-                                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                                        <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                                    </button>
-                                    <div class="track-info">
-                                        <span class="track-name">Acoustic Sessions (Guitar & Strings)</span>
-                                        <span class="track-artist">Live Room Session • Multi-track</span>
-                                    </div>
-                                </div>
-                                <div class="track-timeline">
-                                    <div class="progress-bar-container">
-                                        <div class="progress-fill"></div>
-                                    </div>
-                                    <span class="track-time">0:00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 4. Immagine & 5. Video -->
-                        <div class="project-media-row">
-                            <div class="media-box">
-                                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=900&auto=format&fit=crop" alt="Microfoni e strumenti acustici" class="project-photo">
-                            </div>
-                            <div class="media-box project-video">
-                                <iframe src="https://www.youtube-nocookie.com/embed/4Tr0otuiQuU?rel=0&modestbranding=1" title="Video Sessione 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </article>
-
-
-                    <!-- ==============================================
-                         PROGETTO 4
-                    ============================================== -->
-                    <article class="project-showcase-card">
-                        <!-- 1. Titolo e Tag -->
-                        <span class="project-meta-tag">Full Band Live • Modern Rock</span>
-                        <h3 class="project-heading">Electric Overdrive Takes</h3>
-
-                        <!-- 2. Breve Descrizione -->
-                        <p class="project-summary">
-                            Tracking di batteria completa a 16 canali con microfoni room d'ambiente e testate valvolari Marshall/Vox collocate negli iso-booth per la massima separazione acustica senza perdere l'energia del gruppo.
-                        </p>
-
-                        <!-- 3. Audio Player Custom -->
-                        <div class="project-audio-container">
-                            <div class="custom-audio-card" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
-                                <div class="track-left">
-                                    <button type="button" class="play-btn" aria-label="Riproduci">
-                                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                                        <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                                    </button>
-                                    <div class="track-info">
-                                        <span class="track-name">Electric Overdrive (Drums & Bass Stems)</span>
-                                        <span class="track-artist">Band Session • Tracking</span>
-                                    </div>
-                                </div>
-                                <div class="track-timeline">
-                                    <div class="progress-bar-container">
-                                        <div class="progress-fill"></div>
-                                    </div>
-                                    <span class="track-time">0:00</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 4. Immagine & 5. Video -->
-                        <div class="project-media-row">
-                            <div class="media-box">
-                                <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?q=80&w=900&auto=format&fit=crop" alt="Batteria in studio di registrazione" class="project-photo">
-                            </div>
-                            <div class="media-box project-video">
-                                <iframe src="https://www.youtube-nocookie.com/embed/4Tr0otuiQuU?rel=0&modestbranding=1" title="Video Sessione 4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </article>
-
-                </div>
+                <!-- CONTENITORE DINAMICO PROGETTI -->
+                <div class="projects-wrapper" id="projectsContainer"></div>
             </div>
         </section>
 
@@ -480,10 +324,127 @@
         <p>&copy; 2026 Nome Studio di Registrazione. Tutti i diritti riservati.</p>
     </footer>
 
-    <!-- SCRIPT AUDIO PLAYER + PARALLASSE MOBILE -->
+    <!-- SCRIPT DI GENERAZIONE BLOCCHI + LOGICA AUDIO PLAYER + PARALLASSE -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. GESTIONE AUDIO PLAYER MULTIPLI
+
+            // 1. GENERAZIONE DEI BLOCCHI DINAMICI DAL FILE JS COLLEGATO
+            const container = document.getElementById('projectsContainer');
+
+            if (typeof listaProgetti !== 'undefined' && container) {
+                let htmlOutput = '';
+
+                listaProgetti.forEach(progetto => {
+                    let blocksHtml = '';
+
+                    if (progetto.blocchi && progetto.blocchi.length > 0) {
+                        progetto.blocchi.forEach(b => {
+                            
+                            // A. TESTO
+                            if (b.tipo === 'testo') {
+                                blocksHtml += `<p class="block-text">${b.testo}</p>`;
+                            }
+
+                            // B. AUDIO
+                            else if (b.tipo === 'audio') {
+                                blocksHtml += `
+                                    <div class="block-audio-wrap">
+                                        <div class="custom-audio-card" data-audio="${b.file}">
+                                            <div class="track-left">
+                                                <button type="button" class="play-btn" aria-label="Riproduci">
+                                                    <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                                    <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                                </button>
+                                                <div class="track-info">
+                                                    <span class="track-name">${b.nome}</span>
+                                                    <span class="track-artist">${b.dettagli || ''}</span>
+                                                </div>
+                                            </div>
+                                            <div class="track-timeline">
+                                                <div class="progress-bar-container">
+                                                    <div class="progress-fill"></div>
+                                                </div>
+                                                <span class="track-time">0:00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    ${b.didascalia ? `<div class="block-caption">${b.didascalia}</div>` : ''}
+                                `;
+                            }
+
+                            // C. VIDEO YOUTUBE
+                            else if (b.tipo === 'video') {
+                                const ids = Array.isArray(b.id) ? b.id : [b.id];
+                                
+                                if (ids.length === 1) {
+                                    // 1 solo video -> 100% di larghezza
+                                    blocksHtml += `
+                                        <div class="media-single">
+                                            <iframe src="https://www.youtube-nocookie.com/embed/${ids[0]}?rel=0&modestbranding=1" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                        </div>
+                                    `;
+                                } else {
+                                    // 2 o più video -> Griglia affiancata su desktop
+                                    blocksHtml += `
+                                        <div class="media-grid-multiple">
+                                            ${ids.map(id => `
+                                                <div class="media-grid-item">
+                                                    <iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    `;
+                                }
+                                if (b.didascalia) {
+                                    blocksHtml += `<div class="block-caption">${b.didascalia}</div>`;
+                                }
+                            }
+
+                            // D. IMMAGINI
+                            else if (b.tipo === 'immagine') {
+                                const urls = Array.isArray(b.url) ? b.url : [b.url];
+
+                                if (urls.length === 1) {
+                                    // 1 sola immagine -> 100% di larghezza
+                                    blocksHtml += `
+                                        <div class="media-single">
+                                            <img src="${urls[0]}" alt="${progetto.titolo}">
+                                        </div>
+                                    `;
+                                } else {
+                                    // 2 o più immagini -> Griglia affiancata su desktop
+                                    blocksHtml += `
+                                        <div class="media-grid-multiple">
+                                            ${urls.map(imgSrc => `
+                                                <div class="media-grid-item">
+                                                    <img src="${imgSrc}" alt="${progetto.titolo}">
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    `;
+                                }
+                                if (b.didascalia) {
+                                    blocksHtml += `<div class="block-caption">${b.didascalia}</div>`;
+                                }
+                            }
+
+                        });
+                    }
+
+                    // Card del Progetto Completa
+                    htmlOutput += `
+                        <article class="project-showcase-card">
+                            ${progetto.tag ? `<span class="project-meta-tag">${progetto.tag}</span>` : ''}
+                            <h3 class="project-heading">${progetto.titolo}</h3>
+                            ${blocksHtml}
+                        </article>
+                    `;
+                });
+
+                container.innerHTML = htmlOutput;
+            }
+
+            // 2. GESTIONE AUDIO PLAYER (Attivazione automatica su tutte le card generate)
             const cards = document.querySelectorAll('.custom-audio-card');
             let currentPlayingAudio = null;
             let currentPlayingCard = null;
@@ -505,7 +466,6 @@
 
                 playBtn.addEventListener('click', () => {
                     if (audio.paused) {
-                        // Se c'è un altro brano in riproduzione, lo ferma
                         if (currentPlayingAudio && currentPlayingAudio !== audio) {
                             currentPlayingAudio.pause();
                             if (currentPlayingCard) currentPlayingCard.classList.remove('is-playing');
@@ -541,7 +501,7 @@
                 });
             });
 
-            // 2. PARALLASSE SU MOBILE PER LA FOTO DI COPERTINA
+            // 3. PARALLASSE SU MOBILE PER LA FOTO HERO
             const coverImg = document.querySelector('.service-cover-img');
             window.addEventListener('scroll', () => {
                 if (window.innerWidth <= 900 && coverImg) {
