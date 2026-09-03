@@ -143,4 +143,32 @@ const listaProgetti = [
         ]
     }
 
+
+// ============================================================
+    // PROGETTO 5: prova
+    // ============================================================
+    {
+        tag: "provaaaaa",
+        titolo: "Secondo me fa cagare",
+        blocchi: [
+           {tipo:"video",
+            id:"4Tr0otuiQuU",
+            didascalia:"Questo Beethoven fa schifo"},
+
+            {tipo:"testo",
+            testo:"Ma boh chissa se funzionerà"},
+
+            {tipo:"immagine",
+            url:"prova.jpg",
+            didascalia:"Baaaaaaaaaaaa" }
+    
+        ]
+    }
+
+
+
+
+
+
+    
 ];
