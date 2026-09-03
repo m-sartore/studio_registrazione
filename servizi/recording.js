@@ -141,7 +141,7 @@ const listaProgetti = [
                 didascalia: "Sessione di ascolto in regia a fine riprese." 
             }
         ]
-    }
+    },
 
 
 // ============================================================
