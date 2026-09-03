@@ -32,7 +32,7 @@ const listaProgetti = [
     // ============================================================
     {
         tag: "Sessione Acustica • R&B / Soul",
-        titolo: "Midnight Session (Vocal & Piano)",
+        titolo: "Sessione di mezzanotte (Vocal & Piano)",
         blocchi: [
             { 
                 tipo: "testo", 
