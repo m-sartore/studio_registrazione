@@ -35,23 +35,19 @@ body {
 }
 
 /* ========================================================
-   FRECCIA INDIETRO FISSA
+   1. FRECCIA INDIETRO FISSA (FLOATING BUTTON)
    ======================================================== */
 .floating-back-btn {
     position: fixed;
-    top: 16px;
+    top: 15px;
     left: 24px;
-    width: 44px !important;
-    height: 44px !important;
-    min-width: 44px !important;
-    max-width: 44px !important;
-    min-height: 44px !important;
-    max-height: 44px !important;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
-    background: rgba(20, 20, 20, 0.75);
+    background: rgba(20, 20, 20, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     color: #ffffff;
     display: flex;
     align-items: center;
@@ -63,30 +59,20 @@ body {
 }
 
 .floating-back-btn svg {
-    width: 20px !important;
-    height: 20px !important;
-    display: block;
+    width: 20px;
+    height: 20px;
     transition: transform 0.3s ease;
 }
 
 .floating-back-btn:hover {
-    background: rgba(176, 141, 87, 0.25);
+    background: rgba(176, 141, 87, 0.2);
     border-color: var(--accent-gold);
     color: var(--accent-gold);
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .floating-back-btn:hover svg {
     transform: translateX(-3px);
-}
-
-@media (max-width: 768px) {
-    .floating-back-btn {
-        top: 11px;
-        left: 14px;
-        width: 40px !important;
-        height: 40px !important;
-    }
 }
 
 /* ========================================================
