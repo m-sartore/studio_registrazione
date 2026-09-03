@@ -201,9 +201,12 @@
         /* =======================================================
            RESPONSIVE MOBILE: CARD A FILO SCHERMO (FULL-WIDTH)
         ======================================================= */
+        /* =======================================================
+           RESPONSIVE MOBILE: CARD DEFINITE E BEN SEPARATE
+        ======================================================= */
         @media (max-width: 850px) {
             .portfolio-section {
-                padding: 60px 0;
+                padding: 50px 0 70px 0;
             }
 
             .portfolio-section .container {
@@ -213,34 +216,50 @@
             }
 
             .portfolio-header {
-                padding: 0 18px;
-                margin-bottom: 35px;
+                padding: 0 20px;
+                margin-bottom: 40px;
             }
 
             .portfolio-title {
                 font-size: 2rem;
             }
 
+            /* 1. Stacco minimo dai bordi dello schermo + SPAZIO AMPIO tra i progetti */
             .projects-wrapper {
-                padding: 0 !important;
-                gap: 25px;
+                padding: 0 10px !important;  /* Lascia solo 10px a destra e sinistra */
+                gap: 55px;                  /* Distanza raddoppiata tra una card e l'altra */
             }
 
+            /* 2. La card torna a essere un blocco chiuso e definito */
             .project-showcase-card {
-                border-radius: 0;
-                border-left: none;
-                border-right: none;
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                padding: 24px 16px;
-                box-shadow: none;
+                border-radius: 16px;         /* Angoli ben arrotondati */
+                border: 1px solid rgba(255, 255, 255, 0.12); /* Bordo visibile su TUTTI i 4 lati */
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.055) 0%, rgba(20, 20, 24, 0.95) 100%);
+                padding: 24px 14px;          /* Poco padding interno per lasciare grandi foto e video */
+                box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6); /* Ombra che stacca la card dallo sfondo */
+            }
+
+            .project-meta-tag {
+                font-size: 0.7rem;
+                margin-bottom: 4px;
             }
 
             .project-heading {
-                font-size: 1.5rem;
+                font-size: 1.55rem;
+                margin-bottom: 14px;
             }
 
-            /* Su mobile le griglie si incolonnano al 100% */
+            .block-text {
+                font-size: 0.9rem;
+                margin-bottom: 18px;
+            }
+
+            .block-caption {
+                font-size: 0.8rem;
+                margin: 8px 0 18px 0;
+            }
+
+            /* 3. I media mantengono la massima grandezza possibile */
             .media-grid-multiple {
                 grid-template-columns: 1fr;
                 gap: 14px;
@@ -248,6 +267,8 @@
 
             .media-single, .media-grid-item {
                 border-radius: 10px;
+            }
+        }
             }
         }
     </style>
