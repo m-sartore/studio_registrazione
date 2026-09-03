@@ -12,6 +12,164 @@
     
     <!-- File CSS dedicato ai servizi -->
     <link rel="stylesheet" href="servizi.css">
+
+    <!-- STILI DEDICATI ALLA SEZIONE PORTFOLIO PROGETTI -->
+    <style>
+        /* Portfolio Wrapper & Header */
+        .portfolio-section {
+            padding: 80px 0;
+            background-color: #0c0c0e;
+            color: #ffffff;
+        }
+
+        .portfolio-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+        }
+
+        .section-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #d4af37; /* Accento dorato / caldo studio */
+            margin-bottom: 8px;
+        }
+
+        .portfolio-title {
+            font-family: 'Vollkorn', serif;
+            font-size: 2.6rem;
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .portfolio-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: #9c9ca4;
+            line-height: 1.6;
+        }
+
+        /* Lista Progetti */
+        .projects-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 45px;
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Card Singolo Progetto */
+        .project-showcase-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.015) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 32px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .project-showcase-card:hover {
+            border-color: rgba(255, 255, 255, 0.16);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Testata Progetto (Titolo & Descrizione) */
+        .project-meta-tag {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #d4af37;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .project-heading {
+            font-family: 'Vollkorn', serif;
+            font-size: 1.85rem;
+            margin: 0 0 10px 0;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .project-summary {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #a2a2aa;
+            margin: 0 0 24px 0;
+            max-width: 850px;
+        }
+
+        /* Audio Player Integration */
+        .project-audio-container {
+            margin-bottom: 24px;
+        }
+
+        /* Media Grid (Immagine + Video affiancati) */
+        .project-media-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .media-box {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        /* Immagine */
+        .project-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .project-showcase-card:hover .project-photo {
+            transform: scale(1.03);
+        }
+
+        /* Video YouTube */
+        .project-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* Responsive Mobile & Tablet */
+        @media (max-width: 850px) {
+            .project-showcase-card {
+                padding: 22px;
+            }
+
+            .portfolio-title {
+                font-size: 2rem;
+            }
+
+            .project-heading {
+                font-size: 1.5rem;
+            }
+
+            .project-media-row {
+                grid-template-columns: 1fr; /* Sotto gli 850px si incolonnano: Audio -> Immagine -> Video */
+                gap: 16px;
+            }
+        }
+    </style>
 </head>
 <body class="service-page-body">
 
@@ -64,80 +222,208 @@
             </div>
         </section>
 
-        <!-- 4. I NOSTRI LAVORI (PLAYER AUDIO CUSTOM) -->
+        <!-- 4. I NOSTRI LAVORI (PORTFOLIO PROGETTI) -->
         <section class="portfolio-section">
             <div class="container">
                 <div class="portfolio-header">
                     <h3 class="section-subtitle">PORTFOLIO</h3>
                     <h2 class="portfolio-title">I Nostri Lavori</h2>
-                    <p class="portfolio-desc">Ascolta alcuni dei brani e delle sessioni registrate nel nostro studio.</p>
+                    <p class="portfolio-desc">Esplora le sessioni, ascolta le registrazioni in alta fedeltà e guarda i video realizzati nel nostro studio.</p>
                 </div>
 
-                <!-- Lista Tracce Audio -->
-                <div class="audio-tracks-list">
-                    
-                    <!-- Traccia 1 -->
-                    <div class="custom-audio-card" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
-                        <div class="track-left">
-                            <button type="button" class="play-btn" aria-label="Riproduci">
-                                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                                <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                            </button>
-                            <div class="track-info">
-                                <span class="track-name">Midnight Session (Vocal & Piano)</span>
-                                <span class="track-artist">Artista Esempio • Genere R&B / Soul</span>
+                <!-- LISTA PROGETTI -->
+                <div class="projects-wrapper">
+
+                    <!-- ==============================================
+                         PROGETTO 1
+                    ============================================== -->
+                    <article class="project-showcase-card">
+                        <!-- 1. Titolo e Tag -->
+                        <span class="project-meta-tag">Sessione Acustica • R&B / Soul</span>
+                        <h3 class="project-heading">Midnight Session (Vocal & Piano)</h3>
+
+                        <!-- 2. Breve Descrizione -->
+                        <p class="project-summary">
+                            Registrazione in presa diretta con pianoforte a coda Steinway ripreso in configurazione stereo Blumlein e voce solista catturata tramite microfono valvolare Neumann U67 e preamp analogico Neve 1073.
+                        </p>
+
+                        <!-- 3. Audio Player Custom -->
+                        <div class="project-audio-container">
+                            <div class="custom-audio-card" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+                                <div class="track-left">
+                                    <button type="button" class="play-btn" aria-label="Riproduci">
+                                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                        <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                    </button>
+                                    <div class="track-info">
+                                        <span class="track-name">Midnight Session (Vocal & Piano)</span>
+                                        <span class="track-artist">Take #03 • Master Raw</span>
+                                    </div>
+                                </div>
+                                <div class="track-timeline">
+                                    <div class="progress-bar-container">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                    <span class="track-time">0:00</span>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="track-timeline">
-                            <div class="progress-bar-container">
-                                <div class="progress-fill"></div>
+                        <!-- 4. Immagine & 5. Video (Affiancati su Desktop, Incolonnati su Mobile) -->
+                        <div class="project-media-row">
+                            <!-- Immagine di Default -->
+                            <div class="media-box">
+                                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=900&auto=format&fit=crop" alt="Sessione di registrazione pianoforte" class="project-photo">
                             </div>
-                            <span class="track-time">0:00</span>
-                        </div>
-                    </div>
 
-                    <!-- Traccia 2 -->
-                    <div class="custom-audio-card" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
-                        <div class="track-left">
-                            <button type="button" class="play-btn" aria-label="Riproduci">
-                                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                                <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                            </button>
-                            <div class="track-info">
-                                <span class="track-name">Urban Raw Takes</span>
-                                <span class="track-artist">Trap / Hip-Hop Vocal Session</span>
+                            <!-- Video YouTube Embed -->
+                            <div class="media-box project-video">
+                                <!-- Sostituisci "4Tr0otuiQuU" con l'ID effettivo del tuo video YouTube -->
+                                <iframe src="https://www.youtube-nocookie.com/embed/4Tr0otuiQuU?rel=0&modestbranding=1" title="Video Sessione 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <!-- ==============================================
+                         PROGETTO 2
+                    ============================================== -->
+                    <article class="project-showcase-card">
+                        <!-- 1. Titolo e Tag -->
+                        <span class="project-meta-tag">Vocal Booth • Urban / Hip-Hop</span>
+                        <h3 class="project-heading">Urban Raw Takes</h3>
+
+                        <!-- 2. Breve Descrizione -->
+                        <p class="project-summary">
+                            Tracciamento vocale ad alta definizione per strofe e raddoppi. Catena di registrazione con compressore valvolare Tube-Tech CL1B per un suono compatto, cristallino e perfettamente controllato sulle basse.
+                        </p>
+
+                        <!-- 3. Audio Player Custom -->
+                        <div class="project-audio-container">
+                            <div class="custom-audio-card" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
+                                <div class="track-left">
+                                    <button type="button" class="play-btn" aria-label="Riproduci">
+                                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                        <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                    </button>
+                                    <div class="track-info">
+                                        <span class="track-name">Urban Raw Takes (Main & Adlibs)</span>
+                                        <span class="track-artist">Studio Recording Session</span>
+                                    </div>
+                                </div>
+                                <div class="track-timeline">
+                                    <div class="progress-bar-container">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                    <span class="track-time">0:00</span>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="track-timeline">
-                            <div class="progress-bar-container">
-                                <div class="progress-fill"></div>
+                        <!-- 4. Immagine & 5. Video -->
+                        <div class="project-media-row">
+                            <div class="media-box">
+                                <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=900&auto=format&fit=crop" alt="Consolle e mixing desk" class="project-photo">
                             </div>
-                            <span class="track-time">0:00</span>
+                            <div class="media-box project-video">
+                                <iframe src="https://www.youtube-nocookie.com/embed/4Tr0otuiQuU?rel=0&modestbranding=1" title="Video Sessione 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Traccia 3 -->
-                    <div class="custom-audio-card" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">
-                        <div class="track-left">
-                            <button type="button" class="play-btn" aria-label="Riproduci">
-                                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                                <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                            </button>
-                            <div class="track-info">
-                                <span class="track-name">Acoustic Sessions Vol. 1</span>
-                                <span class="track-artist">Indie Pop / Chitarre & Archi</span>
+
+                    <!-- ==============================================
+                         PROGETTO 3
+                    ============================================== -->
+                    <article class="project-showcase-card">
+                        <!-- 1. Titolo e Tag -->
+                        <span class="project-meta-tag">Acustico & Ensemble • Indie Folk</span>
+                        <h3 class="project-heading">Acoustic Sessions Vol. 1</h3>
+
+                        <!-- 2. Breve Descrizione -->
+                        <p class="project-summary">
+                            Microfonazione stereo XY per due chitarre acustiche Martin D-28, contrabbasso in presa combinata D.I. + microfono a nastro Coles 4038 per preservare il legno e il calore della stanza.
+                        </p>
+
+                        <!-- 3. Audio Player Custom -->
+                        <div class="project-audio-container">
+                            <div class="custom-audio-card" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">
+                                <div class="track-left">
+                                    <button type="button" class="play-btn" aria-label="Riproduci">
+                                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                        <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                    </button>
+                                    <div class="track-info">
+                                        <span class="track-name">Acoustic Sessions (Guitar & Strings)</span>
+                                        <span class="track-artist">Live Room Session • Multi-track</span>
+                                    </div>
+                                </div>
+                                <div class="track-timeline">
+                                    <div class="progress-bar-container">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                    <span class="track-time">0:00</span>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="track-timeline">
-                            <div class="progress-bar-container">
-                                <div class="progress-fill"></div>
+                        <!-- 4. Immagine & 5. Video -->
+                        <div class="project-media-row">
+                            <div class="media-box">
+                                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=900&auto=format&fit=crop" alt="Microfoni e strumenti acustici" class="project-photo">
                             </div>
-                            <span class="track-time">0:00</span>
+                            <div class="media-box project-video">
+                                <iframe src="https://www.youtube-nocookie.com/embed/4Tr0otuiQuU?rel=0&modestbranding=1" title="Video Sessione 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
                         </div>
-                    </div>
+                    </article>
+
+
+                    <!-- ==============================================
+                         PROGETTO 4
+                    ============================================== -->
+                    <article class="project-showcase-card">
+                        <!-- 1. Titolo e Tag -->
+                        <span class="project-meta-tag">Full Band Live • Modern Rock</span>
+                        <h3 class="project-heading">Electric Overdrive Takes</h3>
+
+                        <!-- 2. Breve Descrizione -->
+                        <p class="project-summary">
+                            Tracking di batteria completa a 16 canali con microfoni room d'ambiente e testate valvolari Marshall/Vox collocate negli iso-booth per la massima separazione acustica senza perdere l'energia del gruppo.
+                        </p>
+
+                        <!-- 3. Audio Player Custom -->
+                        <div class="project-audio-container">
+                            <div class="custom-audio-card" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+                                <div class="track-left">
+                                    <button type="button" class="play-btn" aria-label="Riproduci">
+                                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                        <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                    </button>
+                                    <div class="track-info">
+                                        <span class="track-name">Electric Overdrive (Drums & Bass Stems)</span>
+                                        <span class="track-artist">Band Session • Tracking</span>
+                                    </div>
+                                </div>
+                                <div class="track-timeline">
+                                    <div class="progress-bar-container">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                    <span class="track-time">0:00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. Immagine & 5. Video -->
+                        <div class="project-media-row">
+                            <div class="media-box">
+                                <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?q=80&w=900&auto=format&fit=crop" alt="Batteria in studio di registrazione" class="project-photo">
+                            </div>
+                            <div class="media-box project-video">
+                                <iframe src="https://www.youtube-nocookie.com/embed/4Tr0otuiQuU?rel=0&modestbranding=1" title="Video Sessione 4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </article>
 
                 </div>
             </div>
@@ -153,7 +439,7 @@
     <!-- SCRIPT AUDIO PLAYER + PARALLASSE MOBILE -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. GESTIONE AUDIO PLAYER
+            // 1. GESTIONE AUDIO PLAYER MULTIPLI
             const cards = document.querySelectorAll('.custom-audio-card');
             let currentPlayingAudio = null;
             let currentPlayingCard = null;
@@ -175,6 +461,7 @@
 
                 playBtn.addEventListener('click', () => {
                     if (audio.paused) {
+                        // Se c'è un altro brano in riproduzione, lo ferma
                         if (currentPlayingAudio && currentPlayingAudio !== audio) {
                             currentPlayingAudio.pause();
                             if (currentPlayingCard) currentPlayingCard.classList.remove('is-playing');
@@ -216,7 +503,6 @@
                 if (window.innerWidth <= 900 && coverImg) {
                     const scrollY = window.pageYOffset;
                     if (scrollY < window.innerHeight) {
-                        // L'immagine si muove più lentamente rispetto allo scroll
                         coverImg.style.transform = `translate3d(0, ${scrollY * 0.38}px, 0)`;
                     }
                 }
