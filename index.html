@@ -11,6 +11,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Vollkorn:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
+
+    <!-- Stili dedicati alla sicurezza e al feedback del modulo contatti -->
+    <style>
+        .form-feedback {
+            display: none;
+            padding: 14px 18px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .form-feedback.success {
+            display: block;
+            background-color: #1e3a29;
+            color: #d1f7c4;
+            border: 1px solid #2e6040;
+        }
+        .form-feedback.error {
+            display: block;
+            background-color: #3f1d1d;
+            color: #fbd5d5;
+            border: 1px solid #772b2b;
+        }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .email-suggestion {
+            display: none;
+            color: #ffb74d;
+            font-size: 0.85rem;
+            margin-top: 6px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
@@ -116,34 +152,56 @@
             <h2 class="contact-title">PRENOTA LA TUA SESSIONE</h2>
             <p class="contact-subtitle">Parlaci del tuo progetto musicale o fissa una visita in studio.</p>
 
-            <form class="contact-form" action="#" method="POST">
+            <!-- Box di notifica per l'utente (mostra successo o errori) -->
+            <div id="formFeedback" class="form-feedback"></div>
+
+            <form class="contact-form" id="contactForm">
+                
+                <!-- 1. PROTEZIONE HONEYPOT (Anti-bot invisibile per gli utenti reali) -->
+                <input type="text" name="_honey" style="display:none !important;" tabindex="-1" autocomplete="off">
+
+                <!-- 2. PARAMETRI DI CONFIGURAZIONE FORMSUBMIT -->
+                <input type="hidden" name="_subject" value="Nuova richiesta di sessione dal sito web!">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+
+                <!-- RIGA 1: NOME & EMAIL -->
                 <div class="form-row">
                     <div class="form-group">
                         <label for="name">Nome / Nome d'arte</label>
-                        <input type="text" id="name" name="name" required placeholder="Mario Rossi">
+                        <input type="text" id="name" name="name" required minlength="2" maxlength="70" placeholder="Mario Rossi" autocomplete="name">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="mario@example.com">
+                        <input type="email" id="email" name="email" required maxlength="100" placeholder="mario@example.com" autocomplete="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Inserisci un indirizzo email valido e completo">
+                        <small id="emailSuggestion" class="email-suggestion"></small>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="service">Servizio d'interesse</label>
-                    <select id="service" name="service">
-                        <option value="recording">Registrazione</option>
-                        <option value="mixing">Mix & Master</option>
-                        <option value="produzione">Produzione Completa</option>
-                        <option value="altro">Altro / Info generiche</option>
-                    </select>
+                <!-- RIGA 2: TELEFONO & SERVIZIO -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Telefono / WhatsApp <span style="font-weight: normal; opacity: 0.7;">(consigliato)</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="Es. 340 1234567" autocomplete="tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Servizio d'interesse</label>
+                        <select id="service" name="service" required>
+                            <option value="Registrazione">Registrazione</option>
+                            <option value="Mix & Master">Mix & Master</option>
+                            <option value="Produzione Completa">Produzione Completa</option>
+                            <option value="Altro / Info generiche">Altro / Info generiche</option>
+                        </select>
+                    </div>
                 </div>
 
+                <!-- RIGA 3: MESSAGGIO -->
                 <div class="form-group">
                     <label for="message">Il tuo messaggio</label>
-                    <textarea id="message" name="message" rows="5" required placeholder="Descrivi brevemente il tuo brano, genere o data preferita..."></textarea>
+                    <textarea id="message" name="message" rows="5" required minlength="10" maxlength="3000" placeholder="Descrivi brevemente il tuo brano, genere o data preferita..."></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn">INVIA RICHIESTA</button>
+                <button type="submit" class="submit-btn" id="submitBtn">INVIA RICHIESTA</button>
             </form>
         </div>
     </section>
@@ -153,7 +211,7 @@
         <p>&copy; 2026 Nome Studio di Registrazione. Tutti i diritti riservati.</p>
     </footer>
 
-    <!-- JAVASCRIPT: Scroll to top, Reveal & Parallasse (Hero + Banda Grigia) -->
+    <!-- JAVASCRIPT -->
     <script>
         // 1. Click sul Logo per tornare in cima
         document.getElementById('logoToTop').addEventListener('click', function(e) {
@@ -161,7 +219,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // 2. Animazione a discesa allo scroll per le sezioni centrali
+        // 2. Animazione a comparsa allo scroll per le sezioni centrali
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -172,7 +230,7 @@
 
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        // 3. PARALLASSE
+        // 3. PARALLASSE (Hero + Banda Grigia)
         const heroBg = document.querySelector('.parallax-hero');
         const contactSection = document.getElementById('contactSection');
 
@@ -184,16 +242,108 @@
                 heroBg.style.transform = `translate3d(0, ${scrollY * 0.3}px, 0)`;
             }
 
-            // Parallasse della BANDA GRIGIA CONTATTI rispetto al fondo nero
+            // Parallasse della Banda Contatti rispetto al fondo
             if (contactSection) {
                 const rect = contactSection.getBoundingClientRect();
                 if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    // La banda grigia sale a una velocità diversa creando lo scorrimento parallasse
                     const offset = (window.innerHeight - rect.top) * -0.06;
                     contactSection.style.transform = `translate3d(0, ${offset}px, 0)`;
                 }
             }
         }, { passive: true });
+
+        // 4. RILEVATORE AUTOMATICO REFUSI EMAIL (Typo Checker)
+        const emailInput = document.getElementById('email');
+        const emailSuggestion = document.getElementById('emailSuggestion');
+
+        const commonTypos = {
+            'gmil.com': 'gmail.com',
+            'gmaill.com': 'gmail.com',
+            'gmial.com': 'gmail.com',
+            'gamil.com': 'gmail.com',
+            'hotmial.com': 'hotmail.com',
+            'hotmial.it': 'hotmail.it',
+            'hotmai.com': 'hotmail.com',
+            'outlok.com': 'outlook.com',
+            'outlok.it': 'outlook.it',
+            'yaho.com': 'yahoo.com',
+            'yaho.it': 'yahoo.it',
+            'libero.om': 'libero.it',
+            'libero.cmo': 'libero.it',
+            'iclud.com': 'icloud.com'
+        };
+
+        emailInput.addEventListener('blur', function() {
+            const val = emailInput.value.trim().toLowerCase();
+            const parts = val.split('@');
+            
+            if (parts.length === 2) {
+                const domain = parts[1];
+                if (commonTypos[domain]) {
+                    const correctDomain = commonTypos[domain];
+                    const suggestedEmail = parts[0] + '@' + correctDomain;
+                    emailSuggestion.innerHTML = `⚠️ Forse intendevi: <strong>${suggestedEmail}</strong>? (Clicca per correggere)`;
+                    emailSuggestion.style.display = 'block';
+
+                    emailSuggestion.onclick = function() {
+                        emailInput.value = suggestedEmail;
+                        emailSuggestion.style.display = 'none';
+                    };
+                    return;
+                }
+            }
+            emailSuggestion.style.display = 'none';
+        });
+
+        // 5. INVIO ASINCRONO PROTETTO (Nessun ricaricamento di pagina)
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const formFeedback = document.getElementById('formFeedback');
+
+        // Endpoint FormSubmit collegato al tuo indirizzo
+        const TARGET_ENDPOINT = "https://formsubmit.co/ajax/marco.sartore1997@gmail.com";
+
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Pulisce messaggi precedenti
+            formFeedback.className = 'form-feedback';
+            formFeedback.textContent = '';
+            emailSuggestion.style.display = 'none';
+
+            // Blocca il tasto durante l'invio
+            submitBtn.disabled = true;
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = 'INVIO IN CORSO...';
+
+            try {
+                const formData = new FormData(contactForm);
+
+                const response = await fetch(TARGET_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json'
+                    },
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    formFeedback.classList.add('success');
+                    formFeedback.textContent = 'Grazie! La tua richiesta è stata inviata con successo. Ti risponderemo al più presto.';
+                    contactForm.reset();
+                } else {
+                    throw new Error(data.message || 'Errore durante la richiesta');
+                }
+            } catch (err) {
+                formFeedback.classList.add('error');
+                formFeedback.textContent = 'Non è stato possibile inviare il messaggio. Riprova più tardi o scrivici direttamente via mail.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            }
+        });
     </script>
 
 </body>
