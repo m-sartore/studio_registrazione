@@ -31,17 +31,17 @@
 
     <main class="service-detail-container">
 
-        <!-- 3. PRESENTAZIONE SERVIZIO: FOTO + TESTO -->
+        <!-- 3. PRESENTAZIONE SERVIZIO -->
         <section class="service-hero-section">
             <div class="container service-hero-grid">
                 
-                <!-- Immagine (con overlay sfumato e parallasse su mobile) -->
+                <!-- Immagine di copertina (con sfumatura + parallasse su mobile) -->
                 <div class="service-cover-wrap">
                     <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1000&auto=format&fit=crop" alt="Registrazione in Studio" class="service-cover-img">
                     <div class="service-cover-overlay"></div>
                 </div>
 
-                <!-- Testi + Bottone allineato a destra su PC -->
+                <!-- Testi + Bottone (Desktop a destra allineato a sx) -->
                 <div class="service-info-wrap">
                     <span class="service-tag">Servizio Professionale</span>
                     <h2 class="service-title">Registrazione</h2>
@@ -55,7 +55,7 @@
                         </p>
                     </div>
 
-                    <!-- PULSANTE PRENOTAZIONE ALLINEATO AL TESTO -->
+                    <!-- PULSANTE ALLINEATO A SINISTRA SOTTO IL TESTO -->
                     <div class="service-cta-wrapper">
                         <a href="../index.html#contactSection" class="service-cta-btn">Prenota una Sessione &rarr;</a>
                     </div>
@@ -210,13 +210,14 @@
                 });
             });
 
-            // 2. PARALLASSE SU MOBILE PER LA COPERTINA
+            // 2. PARALLASSE SU MOBILE PER LA FOTO DI COPERTINA
             const coverImg = document.querySelector('.service-cover-img');
             window.addEventListener('scroll', () => {
                 if (window.innerWidth <= 900 && coverImg) {
                     const scrollY = window.pageYOffset;
                     if (scrollY < window.innerHeight) {
-                        coverImg.style.transform = `translate3d(0, ${scrollY * 0.35}px, 0)`;
+                        // L'immagine si muove più lentamente rispetto allo scroll
+                        coverImg.style.transform = `translate3d(0, ${scrollY * 0.38}px, 0)`;
                     }
                 }
             }, { passive: true });
