@@ -35,19 +35,23 @@ body {
 }
 
 /* ========================================================
-   1. FRECCIA INDIETRO FISSA (FLOATING BUTTON)
+   1. FRECCIA INDIETRO FISSA
    ======================================================== */
 .floating-back-btn {
     position: fixed;
-    top: 15px;
+    top: 16px;
     left: 24px;
-    width: 45px;
-    height: 45px;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    max-width: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
     border-radius: 50%;
-    background: rgba(20, 20, 20, 0.7);
+    background: rgba(20, 20, 20, 0.75);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: #ffffff;
     display: flex;
     align-items: center;
@@ -59,16 +63,17 @@ body {
 }
 
 .floating-back-btn svg {
-    width: 20px;
-    height: 20px;
+    width: 20px !important;
+    height: 20px !important;
+    display: block;
     transition: transform 0.3s ease;
 }
 
 .floating-back-btn:hover {
-    background: rgba(176, 141, 87, 0.2);
+    background: rgba(176, 141, 87, 0.25);
     border-color: var(--accent-gold);
     color: var(--accent-gold);
-    transform: scale(1.08);
+    transform: scale(1.05);
 }
 
 .floating-back-btn:hover svg {
@@ -111,11 +116,11 @@ body {
 }
 
 /* ========================================================
-   3. HERO DEL SERVIZIO
+   3. HERO DEL SERVIZIO (DESKTOP)
    ======================================================== */
 .service-hero-section {
-    padding-top: 20px;
-    margin-bottom: 90px;
+    padding-top: 25px;
+    margin-bottom: 100px;
 }
 
 .service-hero-grid {
@@ -123,11 +128,11 @@ body {
     grid-template-columns: 460px 1fr;
     gap: 55px;
     align-items: center;
-    margin-bottom: 45px;
 }
 
 /* Immagine a Sinistra */
 .service-cover-wrap {
+    position: relative;
     width: 100%;
     height: 480px;
     border-radius: 20px;
@@ -148,7 +153,19 @@ body {
     transform: scale(1.03);
 }
 
+.service-cover-overlay {
+    display: none; /* Attivo su mobile */
+}
+
 /* Testo a Destra */
+.service-info-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
 .service-tag {
     font-size: 0.8rem;
     letter-spacing: 2px;
@@ -160,7 +177,7 @@ body {
 
 .service-title {
     font-family: var(--font-heading);
-    font-size: 3rem;
+    font-size: 3.2rem;
     color: #fff;
     margin-bottom: 20px;
     line-height: 1.15;
@@ -178,12 +195,16 @@ body {
     color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.7;
+    margin-bottom: 25px;
 }
 
-/* Tasto Prenota Centrato */
+/* Tasto Prenota ALLINEATO A SINISTRA (Desktop) */
 .service-cta-wrapper {
-    text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
 }
 
 .service-cta-btn {
@@ -191,7 +212,7 @@ body {
     background-color: transparent;
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 16px 36px;
+    padding: 15px 34px;
     border-radius: 30px;
     font-size: 0.85rem;
     font-weight: 500;
@@ -388,18 +409,18 @@ body {
 }
 
 /* ========================================================
-   6. RESPONSIVE
+   6. RESPONSIVE MOBILE (SFUMATURA PROFONDA + TESTO IN OVERLAY CON PARALLASSE)
    ======================================================== */
 @media (max-width: 900px) {
     body {
-        padding-top: 85px;
+        padding-top: 65px;
     }
 
     .floating-back-btn {
         top: 12px;
         left: 14px;
-        width: 40px;
-        height: 40px;
+        width: 40px !important;
+        height: 40px !important;
     }
 
     .main-header {
@@ -410,18 +431,74 @@ body {
         font-size: 1.25rem;
     }
 
-    .service-hero-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        margin-bottom: 30px;
+    .service-hero-section {
+        padding-top: 0;
+        margin-bottom: 60px;
     }
 
+    .service-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    /* Cover a schermo intero */
     .service-cover-wrap {
-        height: 300px;
+        width: 100vw;
+        height: 60vh;
+        margin-left: -20px;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .service-cover-img {
+        position: absolute;
+        top: -15%;
+        left: 0;
+        width: 100%;
+        height: 140%;
+        object-fit: cover;
+        will-change: transform;
+    }
+
+    /* Sfumatura morbida e profonda verso il nero */
+    .service-cover-overlay {
+        display: block;
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to top,
+            #080808 0%,
+            rgba(8, 8, 8, 0.92) 22%,
+            rgba(8, 8, 8, 0.5) 55%,
+            rgba(8, 8, 8, 0.1) 85%,
+            transparent 100%
+        );
+        pointer-events: none;
+    }
+
+    /* Le scritte salgono sopra la parte sfumata dell'immagine */
+    .service-info-wrap {
+        position: relative;
+        margin-top: -110px; /* Sale sopra la foto */
+        z-index: 5;
+        padding: 0 5px;
     }
 
     .service-title {
-        font-size: 2.2rem;
+        font-size: 2.3rem;
+        margin-bottom: 15px;
+    }
+
+    .service-cta-wrapper {
+        margin-top: 20px;
+    }
+
+    .service-cta-btn {
+        width: 100%;
+        text-align: center;
     }
 
     .custom-audio-card {
