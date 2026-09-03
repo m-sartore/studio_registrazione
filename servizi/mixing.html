@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mix & Master - Studio di Registrazione</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Vollkorn:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- File CSS dedicato ai servizi -->
+    <link rel="stylesheet" href="servizi.css">
+</head>
+<body class="service-page-body">
+
+    <!-- 1. PULSANTE FRECCIA FISSO -->
+    <a href="../index.html" class="floating-back-btn" title="Torna alla Home" aria-label="Torna indietro">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+    </a>
+
+    <!-- 2. HEADER FISSO -->
+    <header class="main-header">
+        <a href="../index.html" class="logo-link" title="Torna alla Home">
+            <h1 class="logo-placeholder">NOME STUDIO</h1>
+        </a>
+    </header>
+
+    <main class="service-detail-container">
+
+        <!-- 3. PRESENTAZIONE SERVIZIO: FOTO A SINISTRA + TESTO A DESTRA -->
+        <section class="service-hero-section">
+            <div class="container service-hero-grid">
+                
+                <!-- Immagine di copertina a sinistra (stessa della home) -->
+                <div class="service-cover-wrap">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000&auto=format&fit=crop" alt="Mix e Master in Studio" class="service-cover-img">
+                </div>
+
+                <!-- Dettagli e descrizione a destra -->
+                <div class="service-info-wrap">
+                    <span class="service-tag">Servizio Professionale</span>
+                    <h2 class="service-title">Mix & Master</h2>
+                    
+                    <div class="service-description">
+                        <p class="lead-text">
+                            Bilanciamento chirurgico, calore analogico e impatto sonoro ottimizzato per ogni piattaforma di streaming e standard radiofonico.
+                        </p>
+                        <p>
+                            Uniamo il meglio del processing analogico outboard con la massima precisione dei plugin digitali moderni. Curiamo la separazione delle frequenze, la tridimensionalità stereo, la gestione della dinamica e il volume percepito (LUFS), valorizzando ogni singola traccia senza mai sacrificare la naturalezza e l'emozione del brano.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- PULSANTE PRENOTAZIONE CENTRATO SOTTO LA SEZIONE -->
+            <div class="service-cta-wrapper">
+                <a href="../index.html#contactSection" class="service-cta-btn">Prenota una Sessione &rarr;</a>
+            </div>
+        </section>
+
+        <!-- 4. I NOSTRI LAVORI (PLAYER AUDIO CUSTOM) -->
+        <section class="portfolio-section">
+            <div class="container">
+                <div class="portfolio-header">
+                    <h3 class="section-subtitle">PORTFOLIO</h3>
+                    <h2 class="portfolio-title">I Nostri Lavori</h2>
+                    <p class="portfolio-desc">Ascolta la resa sonora dei brani mixati e masterizzati nel nostro studio.</p>
+                </div>
+
+                <!-- Lista Tracce Audio -->
+                <div class="audio-tracks-list">
+                    
+                    <!-- Traccia 1 -->
+                    <div class="custom-audio-card" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3">
+                        <div class="track-left">
+                            <button type="button" class="play-btn" aria-label="Riproduci">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                            </button>
+                            <div class="track-info">
+                                <span class="track-name">Deep Impact (Club Master)</span>
+                                <span class="track-artist">EDM / Elettronica • Analog Outboard Master</span>
+                            </div>
+                        </div>
+
+                        <div class="track-timeline">
+                            <div class="progress-bar-container">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <span class="track-time">0:00</span>
+                        </div>
+                    </div>
+
+                    <!-- Traccia 2 -->
+                    <div class="custom-audio-card" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3">
+                        <div class="track-left">
+                            <button type="button" class="play-btn" aria-label="Riproduci">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                            </button>
+                            <div class="track-info">
+                                <span class="track-name">Velvet Horizon</span>
+                                <span class="track-artist">Pop / Urban • Mix Multi-traccia & Master</span>
+                            </div>
+                        </div>
+
+                        <div class="track-timeline">
+                            <div class="progress-bar-container">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <span class="track-time">0:00</span>
+                        </div>
+                    </div>
+
+                    <!-- Traccia 3 -->
+                    <div class="custom-audio-card" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3">
+                        <div class="track-left">
+                            <button type="button" class="play-btn" aria-label="Riproduci">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                            </button>
+                            <div class="track-info">
+                                <span class="track-name">Raw Power Live Sound</span>
+                                <span class="track-artist">Rock / Alternative • Mix analogico e bilanciamento</span>
+                            </div>
+                        </div>
+
+                        <div class="track-timeline">
+                            <div class="progress-bar-container">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <span class="track-time">0:00</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 Nome Studio di Registrazione. Tutti i diritti riservati.</p>
+    </footer>
+
+    <!-- SCRIPT AUDIO PLAYER -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.custom-audio-card');
+            let currentPlayingAudio = null;
+            let currentPlayingCard = null;
+
+            cards.forEach(card => {
+                const audioSrc = card.getAttribute('data-audio');
+                const audio = new Audio(audioSrc);
+                const playBtn = card.querySelector('.play-btn');
+                const progressFill = card.querySelector('.progress-fill');
+                const progressContainer = card.querySelector('.progress-bar-container');
+                const timeText = card.querySelector('.track-time');
+
+                function formatTime(seconds) {
+                    if (isNaN(seconds)) return '0:00';
+                    const mins = Math.floor(seconds / 60);
+                    const secs = Math.floor(seconds % 60);
+                    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+                }
+
+                playBtn.addEventListener('click', () => {
+                    if (audio.paused) {
+                        if (currentPlayingAudio && currentPlayingAudio !== audio) {
+                            currentPlayingAudio.pause();
+                            if (currentPlayingCard) currentPlayingCard.classList.remove('is-playing');
+                        }
+                        audio.play();
+                        card.classList.add('is-playing');
+                        currentPlayingAudio = audio;
+                        currentPlayingCard = card;
+                    } else {
+                        audio.pause();
+                        card.classList.remove('is-playing');
+                    }
+                });
+
+                audio.addEventListener('timeupdate', () => {
+                    const percent = (audio.currentTime / audio.duration) * 100;
+                    progressFill.style.width = `${percent}%`;
+                    timeText.textContent = formatTime(audio.currentTime);
+                });
+
+                progressContainer.addEventListener('click', (e) => {
+                    const width = progressContainer.clientWidth;
+                    const clickX = e.offsetX;
+                    if (audio.duration) {
+                        audio.currentTime = (clickX / width) * audio.duration;
+                    }
+                });
+
+                audio.addEventListener('ended', () => {
+                    card.classList.remove('is-playing');
+                    progressFill.style.width = '0%';
+                    timeText.textContent = '0:00';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
