@@ -151,22 +151,66 @@
         }
 
         /* Responsive Mobile & Tablet */
+        /* =======================================================
+           RESPONSIVE MOBILE: CARD A FILO SCHERMO (FULL-WIDTH)
+        ======================================================= */
         @media (max-width: 850px) {
-            .project-showcase-card {
-                padding: 22px;
+            
+            /* 1. Azzeriamo i margini dei contenitori esterni */
+            .portfolio-section {
+                padding: 60px 0;
+            }
+
+            .portfolio-section .container {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                max-width: 100% !important;
+            }
+
+            /* L'intestazione del portfolio mantiene un po' di spazio ai lati per il testo */
+            .portfolio-header {
+                padding: 0 18px;
+                margin-bottom: 35px;
             }
 
             .portfolio-title {
                 font-size: 2rem;
             }
 
+            /* 2. Il wrapper occupa tutto lo schermo da bordo a bordo */
+            .projects-wrapper {
+                padding: 0 !important;
+                gap: 25px; /* Spazio verticale tra una card e l'altra */
+            }
+
+            /* 3. La Card arriva ai limiti del display */
+            .project-showcase-card {
+                border-radius: 0;              /* Angoli dritti a filo display */
+                border-left: none;             /* Elimina il bordo sinistro */
+                border-right: none;            /* Elimina il bordo destro */
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 24px 16px;            /* Solo 16px di respiro interno */
+                box-shadow: none;
+            }
+
             .project-heading {
                 font-size: 1.5rem;
             }
 
+            .project-summary {
+                font-size: 0.9rem;
+                margin-bottom: 18px;
+            }
+
+            /* 4. Immagine e Video a tutta larghezza */
             .project-media-row {
-                grid-template-columns: 1fr; /* Sotto gli 850px si incolonnano: Audio -> Immagine -> Video */
+                grid-template-columns: 1fr;    /* Si incolonnano */
                 gap: 16px;
+            }
+
+            .media-box {
+                border-radius: 10px;          /* Mantengono gli angoli arrotondati all'interno */
             }
         }
     </style>
